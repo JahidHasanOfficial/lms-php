@@ -51,6 +51,31 @@ if (!$current_lesson_id) {
     }
 }
 
+// Track Progress (Mark current lesson as completed)
+if ($current_lesson_id) {
+    // 1. Mark lesson as completed
+    $stmt_p = $pdo->prepare("INSERT IGNORE INTO lesson_progress (user_id, course_id, lesson_id, status) VALUES (?, ?, ?, 'completed')");
+    $stmt_p->execute([$_SESSION['user_id'], $course_id, $current_lesson_id]);
+
+    // 2. Update overall enrollment progress %
+    // Get total lessons
+    $totalLessons = 0;
+    foreach ($curriculum as $section) {
+        $totalLessons += count($section['lessons']);
+    }
+
+    // Get completed lessons
+    $stmt_c = $pdo->prepare("SELECT COUNT(*) FROM lesson_progress WHERE user_id = ? AND course_id = ? AND status = 'completed'");
+    $stmt_c->execute([$_SESSION['user_id'], $course_id]);
+    $completedCount = $stmt_c->fetchColumn();
+
+    if ($totalLessons > 0) {
+        $progress = floor(($completedCount / $totalLessons) * 100);
+        $pdo->prepare("UPDATE enrollments SET progress_percent = ? WHERE user_id = ? AND course_id = ?")
+            ->execute([$progress, $_SESSION['user_id'], $course_id]);
+    }
+}
+
 include 'includes/header.php';
 ?>
 
@@ -67,20 +92,36 @@ include 'includes/header.php';
    <!-- Video Player Column -->
    <div class="col-lg-8">
       <div class="white_shd full margin_bottom_30">
-         <div class="padding_infor_info p-0">
+         <div class="padding_infor_info p-0 shadow-lg rounded overflow-hidden">
             <?php if ($current_lesson): ?>
-               <div class="embed-responsive embed-responsive-16by9 bg-black rounded shadow-sm overflow-hidden" style="background: #000;">
-                  <iframe class="embed-responsive-item" src="<?php echo $current_lesson['url']; ?>" allowfullscreen></iframe>
+               <!-- Enhanced Video Player (supports playback speed via video.js if needed, or native html5) -->
+               <div class="bg-black" style="background: #000; position: relative;">
+                  <?php if ($current_lesson['type'] === 'video'): ?>
+                     <video id="my-video" class="video-js vjs-big-play-centered w-100" controls preload="auto" width="640" height="264" poster="../<?php echo $course['thumbnail']; ?>" data-setup='{"playbackRates": [0.5, 1, 1.25, 1.5, 1.75, 2]}'>
+                        <source src="<?php echo $current_lesson['url']; ?>" type="video/mp4" />
+                        <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video</p>
+                     </video>
+                  <?php elseif ($current_lesson['type'] === 'pdf'): ?>
+                     <iframe src="<?php echo $current_lesson['url']; ?>" width="100%" height="500px"></iframe>
+                  <?php else: ?>
+                     <div class="p-5 text-white"><?php echo $current_lesson['content_url']; ?></div>
+                  <?php endif; ?>
                </div>
-               <div class="p-4">
-                  <h3 class="font-weight-bold mb-2"><?php echo $current_lesson['title']; ?></h3>
-                  <div class="d-flex align-items-center text-muted small mb-4">
-                     <span class="mr-3"><i class="fa fa-clock-o"></i> <?php echo $current_lesson['duration']; ?></span>
-                     <span><i class="fa fa-folder-open"></i> <?php echo ucfirst($current_lesson['type']); ?></span>
+               
+               <div class="p-4 bg-white">
+                  <div class="d-flex justify-content-between align-items-start">
+                     <div>
+                        <h3 class="font-weight-bold mb-2"><?php echo $current_lesson['title']; ?></h3>
+                        <div class="d-flex align-items-center text-muted small mb-0">
+                           <span class="mr-3"><i class="fa fa-clock-o"></i> <?php echo $current_lesson['duration']; ?></span>
+                           <span><i class="fa fa-folder-open"></i> <?php echo ucfirst($current_lesson['type']); ?></span>
+                        </div>
+                     </div>
+                     <div class="btn-group">
+                        <button class="btn btn-outline-secondary btn-sm" onclick="bookmarkLesson(<?php echo $current_lesson_id; ?>)"><i class="fa fa-bookmark"></i> Bookmark</button>
+                        <button class="btn btn-primary btn-sm ml-2" onclick="openNoteModal()"><i class="fa fa-edit"></i> Take Note</button>
+                     </div>
                   </div>
-                  <hr>
-                  <h5>About this lesson</h5>
-                  <p class="text-muted">Stay focused and take notes! This lesson is a key part of mastering your skills in <?php echo $course['title']; ?>.</p>
                </div>
             <?php else: ?>
                <div class="text-center p-5">
@@ -98,6 +139,9 @@ include 'includes/header.php';
                 <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab">Overview</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" id="notes-tab" data-toggle="tab" href="#notes" role="tab">My Notes</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" id="qa-tab" data-toggle="tab" href="#qa" role="tab">Q&A</a>
             </li>
             <li class="nav-item">
@@ -106,15 +150,25 @@ include 'includes/header.php';
         </ul>
         <div class="tab-content padding_infor_info" id="watchTabsContent">
             <div class="tab-pane fade show active" id="overview" role="tabpanel">
+                <h6>About this lesson</h6>
+                <p class="text-muted">Stay focused and take notes! This lesson is a key part of mastering your skills in <?php echo $course['title']; ?>.</p>
+                <hr>
                 <h6>Course Description</h6>
                 <p>Learn at your own pace with high-quality content designed to help you succeed.</p>
+            </div>
+            <div class="tab-pane fade" id="notes" role="tabpanel">
+                <div id="notes-list">
+                    <p class="text-muted small">Your notes for this lesson will appear here.</p>
+                </div>
+                <textarea id="note-text" class="form-control mt-3" rows="3" placeholder="Type your note here..."></textarea>
+                <button class="btn btn-primary btn-sm mt-2" onclick="saveNote(<?php echo $current_lesson_id; ?>)">Save Note</button>
             </div>
             <div class="tab-pane fade" id="qa" role="tabpanel">
                 <p class="text-center py-4">No questions yet. Be the first to ask! 🙋‍♂️</p>
                 <button class="btn btn-primary btn-sm center-block">Ask New Question</button>
             </div>
             <div class="tab-pane fade" id="resources" role="tabpanel">
-                <p class="text-center py-4">No extra resources uploaded for this lesson.</p>
+                <p class="text-center py-4 text-muted small">No extra resources uploaded for this lesson.</p>
             </div>
         </div>
       </div>
@@ -163,11 +217,65 @@ include 'includes/header.php';
    </div>
 </div>
 
+<!-- Floating Action Buttons -->
+<div class="fixed-bottom p-4 d-flex justify-content-end" style="pointer-events: none;">
+   <button class="btn btn-dark shadow-lg rounded-circle" id="darkModeToggle" style="pointer-events: auto; width: 50px; height: 50px;">
+      <i class="fa fa-moon-o"></i>
+   </button>
+</div>
+
+<script>
+document.getElementById('darkModeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    const icon = this.querySelector('i');
+    icon.classList.toggle('fa-moon-o');
+    icon.classList.toggle('fa-sun-o');
+});
+
+function saveNote(lessonId) {
+    const note = document.getElementById('note-text').value;
+    if (!note) return alert('Please enter a note!');
+    
+    // Simulate AJAX save
+    console.log('Saving note for lesson ' + lessonId + ':', note);
+    const notesList = document.getElementById('notes-list');
+    const div = document.createElement('div');
+    div.className = 'alert alert-light border-0 shadow-sm small mb-2';
+    div.innerHTML = '<strong>Me:</strong> ' + note;
+    notesList.prepend(div);
+    document.getElementById('note-text').value = '';
+    alert('Note saved!');
+}
+
+function bookmarkLesson(lessonId) {
+    console.log('Bookmarking lesson ' + lessonId);
+    alert('Lesson bookmarked!');
+}
+
+function openNoteModal() {
+    document.getElementById('notes-tab').click();
+    document.getElementById('note-text').focus();
+}
+</script>
+
 <style>
 .bg-black { background: #000; }
 .bg-primary-light { background-color: rgba(3, 169, 244, 0.05); }
 .border-left-primary { border-left: 4px solid #03a9f4; }
 .cursor-pointer { cursor: pointer; }
+
+/* Dark Mode Styles */
+body.dark-mode { background-color: #1a1a1a !important; color: #e0e0e0; }
+body.dark-mode .white_shd { background-color: #262626 !important; color: #e0e0e0; }
+body.dark-mode .page_title h2, body.dark-mode h1, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 { color: #fff; }
+body.dark-mode .card, body.dark-mode .list-group-item { background-color: #2d2d2d; color: #ccc; border-color: #444; }
+body.dark-mode .text-muted { color: #888 !important; }
+body.dark-mode .bg-light { background-color: #333 !important; }
+body.dark-mode .nav-tabs .nav-link { color: #aaa; }
+body.dark-mode .nav-tabs .nav-link.active { background-color: #262626; color: #03a9f4; border-color: #444 #444 #262626; }
 </style>
+
+<link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+<script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
 
 <?php include 'includes/footer.php'; ?>

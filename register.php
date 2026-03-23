@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         try {
             if ($userObj->register($name, $email, $phone, $password)) {
-                redirect('login.php', 'Registration successful! Please login.', 'success');
+                redirect('login.php', 'Registration successful! You can now login.', 'success');
             } else {
                 $error = 'Registration failed. Please try again.';
             }

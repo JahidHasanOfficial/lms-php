@@ -5,6 +5,23 @@ if (!isLoggedIn() || $_SESSION['user_role'] !== 'admin') {
     redirect('index.php');
 }
 
+// Handle Actions
+if (isset($_GET['action']) && isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    $action = $_GET['action'];
+    
+    if ($action === 'suspend') {
+        $pdo->prepare("UPDATE users SET status = 'suspended' WHERE id = ?")->execute([$id]);
+        redirect('users.php', 'User suspended successfully.', 'success');
+    } elseif ($action === 'activate') {
+        $pdo->prepare("UPDATE users SET status = 'active' WHERE id = ?")->execute([$id]);
+        redirect('users.php', 'User activated successfully.', 'success');
+    } elseif ($action === 'delete') {
+        $pdo->prepare("DELETE FROM users WHERE id = ?")->execute([$id]);
+        redirect('users.php', 'User deleted successfully.', 'success');
+    }
+}
+
 $stmt = $pdo->query("SELECT * FROM users ORDER BY created_at DESC");
 $allUsers = $stmt->fetchAll();
 
@@ -50,12 +67,16 @@ include 'includes/header.php';
                         <td><span class="badge badge-info"><?php echo ucfirst($user['role']); ?></span></td>
                         <td><span class="badge badge-<?php echo ($user['status'] === 'active') ? 'success' : 'danger'; ?>"><?php echo ucfirst($user['status']); ?></span></td>
                         <td><?php echo date('M d, Y', strtotime($user['created_at'])); ?></td>
-                        <td>
-                           <button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></button>
-                           <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
-                        </td>
-                     </tr>
-                     <?php endforeach; ?>
+                         <td>
+                            <?php if ($user['status'] === 'active'): ?>
+                               <a href="users.php?action=suspend&id=<?php echo $user['id']; ?>" class="btn btn-warning btn-xs" title="Suspend"><i class="fa fa-pause"></i></a>
+                            <?php else: ?>
+                               <a href="users.php?action=activate&id=<?php echo $user['id']; ?>" class="btn btn-success btn-xs" title="Activate"><i class="fa fa-play"></i></a>
+                            <?php endif; ?>
+                            <a href="users.php?action=delete&id=<?php echo $user['id']; ?>" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete this user?')" title="Delete"><i class="fa fa-trash"></i></a>
+                         </td>
+                      </tr>
+                      <?php endforeach; ?>
                   </tbody>
                </table>
             </div>

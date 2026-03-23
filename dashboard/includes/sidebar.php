@@ -1,3 +1,6 @@
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
 <!-- Sidebar  -->
 <nav id="sidebar">
    <div class="sidebar_blog_1">
@@ -8,7 +11,7 @@
       </div>
       <div class="sidebar_user_info">
          <div class="user_profle_side">
-            <div class="user_img"><img class="img-responsive rounded-circle" src="../backend-template/images/layout_img/user_img.jpg" alt="#" /></div>
+            <div class="user_img"><img class="img-responsive rounded-circle" src="<?php echo $currentUser['profile_pic'] ? '../'.$currentUser['profile_pic'] : '../backend-template/images/layout_img/user_img.jpg'; ?>" alt="#" style="width: 75px; height: 75px; object-fit: cover;" /></div>
             <div class="user_info">
                <h6><?php echo $_SESSION['user_name']; ?></h6>
                <p><span class="online_animation"></span> Online</p>
@@ -19,23 +22,37 @@
    <div class="sidebar_blog_2">
       <h4>Dashboard</h4>
       <ul class="list-unstyled components">
-         <li class="border-bottom border-light">
+         <li class="border-bottom border-light <?php echo ($currentPage == 'index.php') ? 'active' : ''; ?>">
             <a href="<?php echo DASHBOARD_URL; ?>index.php"><i class="fa fa-dashboard yellow_color"></i> <span>Dashboard</span></a>
+         </li>
+         <li class="border-bottom border-light">
+            <a href="<?php echo BASE_URL; ?>" target="_blank"><i class="fa fa-globe blue2_color"></i> <span>Visit Website</span></a>
+         </li>
+         <li class="border-bottom border-light <?php echo ($currentPage == 'profile.php') ? 'active' : ''; ?>">
+            <a href="<?php echo DASHBOARD_URL; ?>profile.php"><i class="fa fa-user purple_color"></i> <span>My Profile</span></a>
          </li>
 
          <!-- Student Navigation -->
-         <li class="border-bottom border-light">
+         <li class="border-bottom border-light <?php echo ($currentPage == 'my-courses.php') ? 'active' : ''; ?>">
             <a href="<?php echo DASHBOARD_URL; ?>my-courses.php"><i class="fa fa-book orange_color"></i> <span>My Courses</span></a>
          </li>
-         <li class="border-bottom border-light">
+         <li class="border-bottom border-light <?php echo ($currentPage == 'live-classes.php') ? 'active' : ''; ?>">
+            <a href="<?php echo DASHBOARD_URL; ?>live-classes.php"><i class="fa fa-video-camera green_color"></i> <span>Live Classes</span></a>
+         </li>
+         <li class="border-bottom border-light <?php echo ($currentPage == 'progress.php') ? 'active' : ''; ?>">
             <a href="<?php echo DASHBOARD_URL; ?>progress.php"><i class="fa fa-line-chart blue1_color"></i> <span>My Progress</span></a>
          </li>
-         <li class="border-bottom border-light">
+         <li class="border-bottom border-light <?php echo ($currentPage == 'support.php' || $currentPage == 'view_ticket.php') ? 'active' : ''; ?>">
+            <a href="<?php echo DASHBOARD_URL; ?>support.php"><i class="fa fa-support red_color"></i> <span>Support & Help</span></a>
+         </li>
+         <li class="border-bottom border-light <?php echo ($currentPage == 'jobs.php') ? 'active' : ''; ?>">
+            <a href="<?php echo DASHBOARD_URL; ?>jobs.php"><i class="fa fa-briefcase yellow_color"></i> <span>Career & Jobs</span></a>
+         </li>
+         <li class="border-bottom border-light <?php echo ($currentPage == 'certificates.php') ? 'active' : ''; ?>">
             <a href="<?php echo DASHBOARD_URL; ?>certificates.php"><i class="fa fa-certificate green_color"></i> <span>Certificates</span></a>
          </li>
-         
-         <li class="border-bottom border-light">
-            <a href="<?php echo ADMIN_URL; ?>support.php"><i class="fa fa-ticket purple_color"></i> <span>Support Tickets</span></a>
+         <li class="border-bottom border-light <?php echo ($currentPage == 'testimonial.php') ? 'active' : ''; ?>">
+            <a href="<?php echo DASHBOARD_URL; ?>testimonial.php"><i class="fa fa-star yellow_color"></i> <span>My Review</span></a>
          </li>
 
          <?php if (hasPermission('access_admin_panel')): ?>
@@ -44,19 +61,6 @@
             </li>
          <?php endif; ?>
 
-         <?php if (hasPermission('manage_rbac')): ?>
-            <li class="border-bottom border-light">
-               <a href="#rbac_management" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-lock purple_color"></i> <span>Access Control</span></a>
-               <ul class="collapse list-unstyled" id="rbac_management">
-                  <li><a href="<?php echo ADMIN_URL; ?>roles.php">> <span>Manage Roles</span></a></li>
-                  <li><a href="<?php echo ADMIN_URL; ?>permissions.php">> <span>Permissions List</span></a></li>
-               </ul>
-            </li>
-         <?php endif; ?>
-
-         <li class="border-bottom border-light">
-            <a href="<?php echo ADMIN_URL; ?>support.php"><i class="fa fa-ticket blue1_color"></i> <span>Support Tickets</span></a>
-         </li>
          <li class="border-bottom border-light">
             <a href="<?php echo BASE_URL; ?>logout.php"><i class="fa fa-sign-out text-danger"></i> <span class="text-danger">Logout</span></a>
          </li>

@@ -33,7 +33,7 @@
                            <div class="icon_info">
                               <ul class="user_profile_dd">
                                  <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="../backend-template/images/layout_img/user_img.jpg" alt="#" /><span class="name_user"><?php echo $_SESSION['user_name']; ?></span></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="<?php echo $currentUser['profile_pic'] ? '../'.$currentUser['profile_pic'] : '../backend-template/images/layout_img/user_img.jpg'; ?>" alt="#" style="width: 35px; height: 35px; object-fit: cover;" /><span class="name_user"><?php echo $_SESSION['user_name']; ?></span></a>
                                     <div class="dropdown-menu">
                                        <a class="dropdown-item" href="profile.php">My Profile</a>
                                        <a class="dropdown-item" href="settings.php">Settings</a>

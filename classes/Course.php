@@ -12,7 +12,10 @@ class Course {
      * Get all published courses
      */
     public function getAllPublished() {
-        $stmt = $this->db->prepare("SELECT c.*, u.name as instructor_name, cat.name as category_name 
+        $stmt = $this->db->prepare("SELECT c.*, u.name as instructor_name, cat.name as category_name, 
+                                           (SELECT COUNT(*) FROM enrollments WHERE course_id = c.id) as student_count,
+                                           (SELECT CONCAT('Batch ', batch_no) FROM batches WHERE course_id = c.id AND status != 'completed' ORDER BY start_date ASC LIMIT 1) as next_batch_name,
+                                           (SELECT enrollment_deadline FROM batches WHERE course_id = c.id AND status != 'completed' ORDER BY start_date ASC LIMIT 1) as enrollment_deadline
                                     FROM courses c
                                     JOIN users u ON c.instructor_id = u.id
                                     LEFT JOIN categories cat ON c.category_id = cat.id
@@ -35,25 +38,41 @@ class Course {
         return $stmt->fetch();
     }
 
-    /**
-     * Create a new course
-     */
     public function create($data) {
-        $stmt = $this->db->prepare("INSERT INTO courses (title, slug, description, thumbnail, price, category_id, instructor_id, status) 
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO courses (title, slug, description, thumbnail, price, discount_price, category_id, instructor_id, status, tags, career_path) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if ($stmt->execute([
             $data['title'],
             $data['slug'],
             $data['description'],
             $data['thumbnail'],
             $data['price'],
+            $data['discount_price'] ?? 0.00,
             $data['category_id'],
             $data['instructor_id'],
-            $data['status']
+            $data['status'],
+            $data['tags'] ?? NULL,
+            $data['career_path'] ?? NULL
         ])) {
             return $this->db->lastInsertId();
         }
         return false;
+    }
+
+    /**
+     * Update a course
+     */
+    public function update($id, $data) {
+        $fields = [];
+        $values = [];
+        foreach ($data as $key => $value) {
+            $fields[] = "$key = ?";
+            $values[] = $value;
+        }
+        $values[] = $id;
+        $sql = "UPDATE courses SET " . implode(', ', $fields) . " WHERE id = ?";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute($values);
     }
 
     /**
@@ -117,6 +136,33 @@ class Course {
         $stmt = $this->db->prepare("SELECT u.* FROM users u 
                                     JOIN course_instructors ci ON u.id = ci.user_id 
                                     WHERE ci.course_id = ?");
+        $stmt->execute([$course_id]);
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Get outcomes for a course
+     */
+    public function getOutcomes($course_id) {
+        $stmt = $this->db->prepare("SELECT * FROM course_outcomes WHERE course_id = ?");
+        $stmt->execute([$course_id]);
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Get testimonials for a course
+     */
+    public function getTestimonials($course_id) {
+        $stmt = $this->db->prepare("SELECT * FROM course_testimonials WHERE course_id = ?");
+        $stmt->execute([$course_id]);
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Get features for a course
+     */
+    public function getFeatures($course_id) {
+        $stmt = $this->db->prepare("SELECT * FROM course_features WHERE course_id = ?");
         $stmt->execute([$course_id]);
         return $stmt->fetchAll();
     }

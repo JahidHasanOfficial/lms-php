@@ -8,51 +8,46 @@ if (!isLoggedIn()) {
 $quiz_id = $_GET['id'] ?? null;
 if (!$quiz_id) redirect('index.php');
 
-// Fetch Quiz Details
-$stmt = $pdo->prepare("SELECT q.*, c.title as course_title 
-                        FROM quizzes q 
-                        JOIN courses c ON q.course_id = c.id 
-                        WHERE q.id = ? AND q.status = 'published'");
+// Fetch Quiz & Questions
+$stmt = $pdo->prepare("SELECT q.*, c.title as course_title FROM quizzes q JOIN courses c ON q.course_id = c.id WHERE q.id = ?");
 $stmt->execute([$quiz_id]);
 $quiz = $stmt->fetch();
 
 if (!$quiz) redirect('index.php');
 
-// Check if user has already attempted this quiz
-$stmt_check = $pdo->prepare("SELECT id FROM quiz_results WHERE quiz_id = ? AND user_id = ?");
-$stmt_check->execute([$quiz_id, $_SESSION['user_id']]);
-$existing_result = $stmt_check->fetch();
+// Fetch Questions with Options
+$stmt_q = $pdo->prepare("SELECT * FROM quiz_questions WHERE quiz_id = ? ORDER BY id ASC");
+$stmt_q->execute([$quiz_id]);
+$questions = $stmt_q->fetchAll();
 
-if ($existing_result) {
-    header("Location: quiz_result.php?id=" . $existing_result['id']);
-    exit();
+foreach ($questions as &$q) {
+    $stmt_o = $pdo->prepare("SELECT * FROM quiz_options WHERE question_id = ?");
+    $stmt_o->execute([$q['id']]);
+    $q['options'] = $stmt_o->fetchAll();
 }
-
-// Fetch Questions
-$stmt = $pdo->prepare("SELECT * FROM quiz_questions WHERE quiz_id = ? ORDER BY id ASC");
-$stmt->execute([$quiz_id]);
-$questions = $stmt->fetchAll();
 
 // Handle Submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_answers = $_POST['answers'] ?? [];
+    $user_id = $_SESSION['user_id'];
     $score = 0;
-    $total_marks = 0;
-
+    $total = count($questions);
+    
     foreach ($questions as $q) {
-        $total_marks += $q['marks'];
-        if (isset($user_answers[$q['id']]) && $user_answers[$q['id']] === $q['correct_answer']) {
-            $score += $q['marks'];
+        $ans = $_POST['q_' . $q['id']] ?? null;
+        if ($ans) {
+            $stmt_check = $pdo->prepare("SELECT is_correct FROM quiz_options WHERE id = ?");
+            $stmt_check->execute([$ans]);
+            if ($stmt_check->fetchColumn()) {
+                $score++;
+            }
         }
     }
-
-    // Save result
-    $stmt = $pdo->prepare("INSERT INTO quiz_results (quiz_id, user_id, score, total_marks) VALUES (?, ?, ?, ?)");
-    $stmt->execute([$quiz_id, $_SESSION['user_id'], $score, $total_marks]);
     
-    $result_id = $pdo->lastInsertId();
-    header("Location: quiz_result.php?id=" . $result_id);
-    exit();
+    // Save Result
+    $stmt_res = $pdo->prepare("INSERT INTO quiz_results (quiz_id, user_id, score, total_marks) VALUES (?, ?, ?, ?)");
+    $stmt_res->execute([$quiz_id, $user_id, $score, $total]);
+    
+    $success = "You scored $score out of $total!";
 }
 
 include 'includes/header.php';
@@ -60,81 +55,87 @@ include 'includes/header.php';
 
 <div class="row column_title">
    <div class="col-md-12">
-      <div class="page_title d-flex justify-content-between align-items-center">
-         <div>
-            <h2 class="mb-0"><?php echo $quiz['title']; ?></h2>
-            <p class="text-muted small mb-0"><?php echo $quiz['course_title']; ?></p>
-         </div>
-         <div class="text-right">
-            <h4 class="text-primary mb-0" id="timer"><?php echo $quiz['time_limit_minutes']; ?>:00</h4>
-            <small class="text-muted">Remaining Time</small>
-         </div>
+      <div class="page_title">
+         <h2>Quiz: <?php echo $quiz['title']; ?> (A-03, A-06)</h2>
       </div>
    </div>
 </div>
 
 <div class="row">
-   <div class="col-md-12">
-      <form action="" method="POST" id="quizForm">
-         <?php foreach ($questions as $index => $q): 
-            $options = json_decode($q['options'], true);
-         ?>
-         <div class="white_shd full margin_bottom_30 shadow-sm border-0">
-            <div class="full graph_head bg-light pl-4 py-3">
-               <div class="heading1 margin_0">
-                  <h6 class="font-weight-bold">Question <?php echo $index + 1; ?> of <?php echo count($questions); ?></h6>
-               </div>
-            </div>
-            <div class="padding_infor_info p-4">
-               <h5 class="mb-4 text-dark"><?php echo $q['question_text']; ?></h5>
-               <div class="row">
-                  <?php foreach ($options as $optIndex => $option): ?>
-                  <div class="col-md-6 mb-3">
-                     <label class="d-flex align-items-center p-3 rounded border question_option cursor-pointer transition-all" for="q<?php echo $q['id']; ?>o<?php echo $optIndex; ?>">
-                        <input type="radio" name="answers[<?php echo $q['id']; ?>]" value="<?php echo $option; ?>" id="q<?php echo $q['id']; ?>o<?php echo $optIndex; ?>" class="mr-3 custom_radio">
-                        <span><?php echo $option; ?></span>
-                     </label>
+   <div class="col-md-8 offset-md-2">
+      <?php if (isset($success)): ?>
+         <div class="white_shd full margin_bottom_30 p-5 text-center bg-white rounded shadow">
+            <i class="fa fa-trophy fa-4x text-warning mb-3"></i>
+            <h3>Assessment Complete!</h3>
+            <p class="lead"><?php echo $success; ?></p>
+            <a href="index.php" class="btn btn-primary px-5 mt-3">Back to Dashboard</a>
+         </div>
+      <?php else: ?>
+         <form method="POST">
+            <div id="quiz-container">
+               <?php foreach ($questions as $index => $q): ?>
+                  <div class="white_shd full margin_bottom_30 quiz-step <?php echo ($index == 0) ? '' : 'd-none'; ?>" id="q-<?php echo $index; ?>">
+                     <div class="full graph_head p-4">
+                        <div class="d-flex justify-content-between">
+                           <h5 class="mb-0 font-weight-bold text-primary">Question <?php echo $index + 1; ?> of <?php echo count($questions); ?></h5>
+                           <span class="badge badge-info">1 Point</span>
+                        </div>
+                     </div>
+                     <div class="padding_infor_info p-5">
+                        <h4 class="mb-4 text-dark"><?php echo $q['question']; ?></h4>
+                        <div class="options-list">
+                           <?php foreach ($q['options'] as $opt): ?>
+                              <label class="option-item d-block p-3 border rounded mb-3 cursor-pointer">
+                                 <input type="radio" name="q_<?php echo $q['id']; ?>" value="<?php echo $opt['id']; ?>" class="mr-3">
+                                 <?php echo $opt['option_text']; ?>
+                              </label>
+                           <?php endforeach; ?>
+                        </div>
+                     </div>
+                     <div class="modal-footer border-0 p-4">
+                        <?php if ($index > 0): ?>
+                           <button type="button" class="btn btn-secondary px-4" onclick="showStep(<?php echo $index - 1; ?>)">Previous</button>
+                        <?php endif; ?>
+                        
+                        <?php if ($index < count($questions) - 1): ?>
+                           <button type="button" class="btn btn-primary px-4" onclick="showStep(<?php echo $index + 1; ?>)">Next Question</button>
+                        <?php else: ?>
+                           <button type="submit" class="btn btn-success px-4" onclick="return confirm('Finish assessment?')">Submit Quiz</button>
+                        <?php endif; ?>
+                     </div>
                   </div>
-                  <?php endforeach; ?>
-               </div>
+               <?php endforeach; ?>
             </div>
-         </div>
-         <?php endforeach; ?>
-
-         <div class="text-center mb-5">
-            <button type="submit" class="btn btn-primary btn-lg px-5 py-3 shadow-lg rounded-pill font-weight-bold">
-               <i class="fa fa-paper-plane mr-2"></i> Submit My Answers
-            </button>
-         </div>
-      </form>
+         </form>
+      <?php endif; ?>
    </div>
 </div>
 
-<style>
-.question_option { border: 2px solid #eee; transition: all 0.2s; }
-.question_option:hover { border-color: #03a9f4; background-color: rgba(3, 169, 244, 0.05); }
-.custom_radio { width: 18px; height: 18px; }
-input[type="radio"]:checked + span { font-weight: bold; color: #03a9f4; }
-.transition-all { transition: all 0.3s; }
-.cursor-pointer { cursor: pointer; }
-</style>
-
 <script>
-// Simple Timer
-let timeLeft = <?php echo $quiz['time_limit_minutes'] * 60; ?>;
-const timerDisplay = document.getElementById('timer');
+function showStep(step) {
+    document.querySelectorAll('.quiz-step').forEach(div => div.classList.add('d-none'));
+    document.getElementById('q-' + step).classList.remove('d-none');
+}
 
+// Timer Logic (A-06)
+<?php if (!isset($success)): ?>
+let timeLeft = <?php echo $quiz['time_limit'] * 60; ?>;
 const timerInterval = setInterval(() => {
+    timeLeft--;
     if (timeLeft <= 0) {
         clearInterval(timerInterval);
-        document.getElementById('quizForm').submit();
-    } else {
-        timeLeft--;
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        alert('Time is up!');
+        document.forms[0].submit();
     }
 }, 1000);
+<?php endif; ?>
 </script>
+
+<style>
+.option-item { transition: all 0.2s; }
+.option-item:hover { background-color: #f8f9fa; border-color: #03a9f4; }
+.cursor-pointer { cursor: pointer; }
+.option-item input:checked + i { color: #03a9f4; }
+</style>
 
 <?php include 'includes/footer.php'; ?>

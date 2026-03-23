@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         unset($_SESSION['permissions']);
     }
     
-    $success = "Permissions for " . $role['name'] . " updated successfully!";
+    redirect('role_permissions.php?id='.$role_id, "Permissions for " . $role['name'] . " updated successfully!", 'success');
 }
 
 // Fetch all permissions grouped by module
@@ -56,9 +56,7 @@ include 'includes/header.php';
    </div>
 </div>
 
-<?php if (isset($success)): ?>
-   <div class="alert alert-success shadow-sm border-0"><?php echo $success; ?></div>
-<?php endif; ?>
+<?php displayAlert(); ?>
 
 <form action="" method="POST">
    <div class="row">

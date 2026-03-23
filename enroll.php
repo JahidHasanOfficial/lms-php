@@ -19,16 +19,32 @@ if ($stmt->fetch()) {
     redirect(DASHBOARD_URL . 'index.php', 'You are already enrolled in this course.', 'info');
 }
 
+$stmt_c = $pdo->prepare("SELECT title, price, discount_price FROM courses WHERE id = ?");
+$stmt_c->execute([$course_id]);
+$course = $stmt_c->fetch();
+
+if (!$course) redirect('index.php');
+
+$final_price = $course['discount_price'] ?: $course['price'];
+
+// If course is NOT free, redirect to checkout
+if ($final_price > 0) {
+    header("Location: checkout.php?id=$course_id");
+    exit();
+}
+
 // Find correct batch
 $batchObj = new Batch($pdo);
 $batch = $batchObj->getActiveBatch($course_id);
 $batch_id = $batch ? $batch['id'] : null;
 
-// Enroll user
+// Enroll user (Free course)
 $stmt = $pdo->prepare("INSERT INTO enrollments (user_id, course_id, batch_id, payment_status, progress_percent) VALUES (?, ?, ?, 'completed', 0)");
 if ($stmt->execute([$_SESSION['user_id'], $course_id, $batch_id])) {
-    redirect(DASHBOARD_URL . 'index.php', 'Enrollment successful! You are added to Batch ' . ($batch['batch_no'] ?? '1') . '.', 'success');
-} else {
-    redirect('courses.php', 'Enrollment failed. Please try again.', 'error');
+    // Record free payment
+    $pdo->prepare("INSERT INTO payments (user_id, course_id, amount, method, transaction_id, status) VALUES (?, ?, ?, 'free', ?, 'success')")
+        ->execute([$_SESSION['user_id'], $course_id, 0.00, 'FREE-'.time()]);
+    
+    redirect(DASHBOARD_URL . 'index.php', 'Free enrollment successful! Enjoy your course.', 'success');
 }
 ?>

@@ -13,7 +13,7 @@
       <link rel="stylesheet" href="../backend-template/css/bootstrap-select.css" />
       <link rel="stylesheet" href="../backend-template/css/perfect-scrollbar.css" />
       <link rel="stylesheet" href="../backend-template/css/custom.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
    </head>
    <body class="dashboard dashboard_1">
       <div class="full_container">

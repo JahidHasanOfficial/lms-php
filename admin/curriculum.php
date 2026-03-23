@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['add_section'])) {
         $title = sanitize($_POST['section_title']);
         $curr->addSection($course_id, $title);
-        $success = "Section added!";
+        redirect('curriculum.php?course_id='.$course_id, "Section added!", 'success');
     }
     if (isset($_POST['add_lesson'])) {
         $section_id = (int)$_POST['section_id'];
@@ -25,7 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $url = $_POST['content_url'];
         $duration = sanitize($_POST['duration']);
         $curr->addLesson($section_id, $title, $type, $url, $duration);
-        $success = "Lesson added!";
+        redirect('curriculum.php?course_id='.$course_id, "Lesson added!", 'success');
+    }
+    if (isset($_POST['delete_lesson'])) {
+        $lesson_id = (int)$_POST['lesson_id'];
+        $pdo->prepare("DELETE FROM lessons WHERE id = ?")->execute([$lesson_id]);
+        redirect('curriculum.php?course_id='.$course_id, "Lesson removed!", 'success');
     }
 }
 
@@ -49,6 +54,9 @@ include 'includes/header.php';
 </div>
 
 <div class="row">
+   <div class="col-md-12">
+      <?php displayAlert(); ?>
+   </div>
    <!-- Add Section -->
    <div class="col-md-4">
       <div class="white_shd full margin_bottom_30">
@@ -97,6 +105,8 @@ include 'includes/header.php';
                         <option value="video">Video</option>
                         <option value="pdf">PDF</option>
                         <option value="text">Article</option>
+                        <option value="quiz">Quiz</option>
+                        <option value="assignment">Assignment</option>
                      </select>
                   </div>
                   <div class="col-md-4">
@@ -126,9 +136,12 @@ include 'includes/header.php';
                            <td width="5%"><?php echo $index + 1; ?>.</td>
                            <td width="10%"><i class="fa fa-<?php echo ($les['content_type'] === 'video') ? 'play-circle' : 'file-text'; ?> text-secondary"></i></td>
                            <td><?php echo $les['title']; ?></td>
-                           <td class="text-right">
+                           <td class="text-right d-flex align-items-center justify-content-end">
                               <span class="small text-muted mr-3"><?php echo $les['duration']; ?></span>
-                              <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                              <form method="POST" style="display:inline;" onsubmit="return confirm('Remove this lesson?');">
+                                 <input type="hidden" name="lesson_id" value="<?php echo $les['id']; ?>">
+                                 <button type="submit" name="delete_lesson" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                              </form>
                            </td>
                         </tr>
                         <?php endforeach; ?>

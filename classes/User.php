@@ -16,8 +16,42 @@ class User {
         $stmt_role->execute([$role_slug]);
         $role_id = $stmt_role->fetchColumn();
 
-        $stmt = $this->db->prepare("INSERT INTO users (name, email, phone, password, role, role_id) VALUES (?, ?, ?, ?, ?, ?)");
-        return $stmt->execute([$name, $email, $phone, $hashed_password, $role_slug, $role_id]);
+        // Generate OTP (Optional: good for security logs but not mandatory for registration wall)
+        $otp = rand(100000, 999999);
+
+        $stmt = $this->db->prepare("INSERT INTO users (name, email, phone, password, role, role_id, otp_code, is_verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        return $stmt->execute([$name, $email, $phone, $hashed_password, $role_slug, $role_id, $otp, 1]);
+    }
+
+    public function verifyOTP($email, $otp) {
+        $stmt = $this->db->prepare("SELECT id FROM users WHERE email = ? AND otp_code = ?");
+        $stmt->execute([$email, $otp]);
+        $user = $stmt->fetch();
+
+        if ($user) {
+            $stmt = $this->db->prepare("UPDATE users SET is_verified = 1, otp_code = NULL WHERE id = ?");
+            return $stmt->execute([$user['id']]);
+        }
+        return false;
+    }
+
+    public function findBySocialId($provider, $id) {
+        $column = $provider . "_id";
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE $column = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch();
+    }
+
+    public function createSocialUser($name, $email, $provider, $id) {
+        $column = $provider . "_id";
+        
+        // Find role_id for learner
+        $stmt_role = $this->db->prepare("SELECT id FROM roles WHERE slug = 'learner'");
+        $stmt_role->execute();
+        $role_id = $stmt_role->fetchColumn();
+
+        $stmt = $this->db->prepare("INSERT INTO users (name, email, role, role_id, $column, is_verified) VALUES (?, ?, 'learner', ?, ?, 1)");
+        return $stmt->execute([$name, $email, $role_id, $id]);
     }
 
     /**

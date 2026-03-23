@@ -60,7 +60,7 @@ include 'includes/header.php';
                         <td><span class="badge badge-<?php echo ($ticket['status'] === 'open') ? 'success' : 'secondary'; ?>"><?php echo ucfirst($ticket['status']); ?></span></td>
                         <td><?php echo date('M d, Y', strtotime($ticket['created_at'])); ?></td>
                         <td>
-                           <button class="btn btn-primary btn-xs">View/Reply</button>
+                           <a href="view_ticket.php?id=<?php echo $ticket['id']; ?>" class="btn btn-primary btn-xs">View/Reply</a>
                         </td>
                      </tr>
                      <?php endforeach; ?>

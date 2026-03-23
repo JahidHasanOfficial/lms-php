@@ -51,12 +51,18 @@ include 'includes/header.php';
                                              <td><img src="../<?php echo $course['thumbnail']; ?>" width="80" class="rounded"></td>
                                              <td><?php echo $course['title']; ?></td>
                                              <td><?php echo $course['instructor_name']; ?></td>
-                                             <td>$<?php echo $course['price']; ?></td>
+                                             <td class="small">
+                                                  Reg: ৳<?php echo number_format($course['price']); ?><br>
+                                                  <?php if ($course['discount_price'] > 0): ?>
+                                                  <span class="text-success">Disc: ৳<?php echo number_format($course['discount_price']); ?></span>
+                                                  <?php endif; ?>
+                                             </td>
                                              <td><span class="badge badge-<?php echo ($course['status'] === 'published') ? 'success' : 'warning'; ?>"><?php echo ucfirst($course['status']); ?></span></td>
                                              <td>
                                                 <div class="btn-group">
-                                                   <a href="view_course.php?id=<?php echo $course['id']; ?>" class="btn btn-secondary btn-xs" title="View Source"><i class="fa fa-eye"></i> View</a>
-                                                   <a href="curriculum.php?course_id=<?php echo $course['id']; ?>" class="btn btn-info btn-xs" title="Curriculum"><i class="fa fa-list"></i> Curriculum</a>
+                                                   <a href="../course-details.php?slug=<?php echo $course['slug']; ?>" target="_blank" class="btn btn-dark btn-xs" title="Preview Public Page"><i class="fa fa-external-link"></i> Preview</a>
+                                                   <a href="curriculum.php?course_id=<?php echo $course['id']; ?>" class="btn btn-info btn-xs" title="Curriculum"><i class="fa fa-list"></i></a>
+                                                   <a href="course_builder.php?id=<?php echo $course['id']; ?>" class="btn btn-success btn-xs" title="Landing Page Builder"><i class="fa fa-magic"></i></a>
                                                    <a href="batches.php?course_id=<?php echo $course['id']; ?>" class="btn btn-warning btn-xs" title="Manage Batches"><i class="fa fa-users"></i> Batches</a>
                                                    <a href="edit_course.php?id=<?php echo $course['id']; ?>" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i></a>
                                                    <a href="delete_course.php?id=<?php echo $course['id']; ?>" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></a>
