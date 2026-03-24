@@ -8,71 +8,220 @@ $courses = $courseObj->getAllPublished();
 require_once 'includes/header.php';
 ?>
 
-<!-- Header Start -->
-<div class="container-fluid bg-primary py-5 mb-5 page-header">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
-                <h1 class="display-3 text-white animated slideInDown">Courses</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a class="text-white" href="index.php">Home</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Courses</li>
-                    </ol>
-                </nav>
+<!-- Custom Style Link -->
+<link href="frontend-template/css/courses-custom.css" rel="stylesheet">
+
+<div class="container-xxl py-5 bg-light" style="min-height: 100vh;">
+    <div class="container">
+        <!-- Main Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="section-header-v2 shadow-sm">
+                    <h1 class="fw-bold text-uppercase">All Courses</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Sidebar Filters -->
+            <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="filter-card shadow-sm">
+                    <!-- Search -->
+                    <div class="mb-4">
+                        <div class="filter-group-header">
+                            <span>Search by Course</span>
+                        </div>
+                        <div class="search-input-group mt-2">
+                            <i class="fa fa-search"></i>
+                            <input type="text" id="courseSearch" placeholder="Search by course name...">
+                        </div>
+                    </div>
+
+                    <!-- Category -->
+                    <div class="mb-4">
+                        <div class="filter-group-header">
+                            <span>Course Category</span>
+                        </div>
+                        <ul class="filter-items-list mt-2">
+                            <li><input type="checkbox" class="category-filter" value="web"> Web & Software Development</li>
+                            <li><input type="checkbox" class="category-filter" value="graphics"> Graphics and Multimedia</li>
+                            <li><input type="checkbox" class="category-filter" value="marketing"> Digital Marketing</li>
+                            <li><input type="checkbox" class="category-filter" value="networking"> Networking</li>
+                            <li><input type="checkbox" class="category-filter" value="cpa"> CPA and Affiliate Marketing</li>
+                        </ul>
+                    </div>
+
+                    <!-- Dual Handle Price Range (NEW) -->
+                    <div class="mb-4">
+                        <div class="filter-group-header">
+                            <span>Price Range</span>
+                        </div>
+                        <div class="middle">
+                            <div class="multi-range-slider">
+                                <input type="range" id="input-left" class="price-input" min="0" max="100000" value="0">
+                                <input type="range" id="input-right" class="price-input" min="0" max="100000" value="100000">
+
+                                <div class="slider">
+                                    <div class="track"></div>
+                                    <div class="range"></div>
+                                    <div class="thumb left"></div>
+                                    <div class="thumb right"></div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mt-4">
+                                <span id="minPriceDisplay" class="small fw-bold text-success">৳ 0</span>
+                                <span id="maxPriceDisplay" class="small fw-bold text-success">৳ 100000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Level -->
+                    <div class="mb-4">
+                        <div class="filter-group-header">
+                            <span>Level</span>
+                        </div>
+                        <ul class="filter-items-list mt-2">
+                            <li><input type="checkbox" class="level-filter" value="Beginner"> Beginner</li>
+                            <li><input type="checkbox" class="level-filter" value="Intermediate"> Intermediate</li>
+                            <li><input type="checkbox" class="level-filter" value="Advanced"> Advanced</li>
+                        </ul>
+                    </div>
+
+                    <button id="clearFilters" class="btn btn-success w-100 py-3 mt-3 shadow-sm border-0" style="background: #28a745; border-radius: 5px; font-weight: 700;">
+                        <i class="fa fa-filter me-2"></i> Clear Query Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Course Content -->
+            <div class="col-lg-9">
+                <div class="row g-4" id="courseContainer">
+                    <?php if (empty($courses)): ?>
+                        <div class="col-12 text-center py-5"><h3 class="text-muted">No courses available.</h3></div>
+                    <?php else: ?>
+                        <?php foreach ($courses as $course): ?>
+                            <div class="col-lg-4 col-md-6 course-item-v2 wow fadeInUp" 
+                                 data-title="<?php echo strtolower($course['title']); ?>"
+                                 data-category="<?php echo strtolower($course['category_name'] ?? 'web'); ?>" 
+                                 data-price="<?php echo $course['price']; ?>"
+                                 data-level="<?php echo $course['level'] ?? 'Beginner'; ?>"
+                                 data-wow-delay="0.1s">
+                                <div class="course-card-v2 shadow-sm">
+                                    <div class="thumb-v2">
+                                        <img src="<?php echo $course['thumbnail']; ?>" alt="<?php echo $course['title']; ?>">
+                                        <span class="off-badge">৳ <?php echo ceil($course['price'] * 0.2); ?> off</span>
+                                    </div>
+                                    <div class="content-v2">
+                                        <h5 class="title-v2"><?php echo $course['title']; ?></h5>
+                                        <div class="rating-v2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                                        <div class="meta-v2"><span><i class="fa fa-book"></i> 15 Classes</span><span><i class="fa fa-clock"></i> 60 days</span></div>
+                                        <div class="price-v2 mt-3"><span class="old-price">৳ <?php echo $course['price'] + ceil($course['price'] * 0.2); ?></span><span class="new-price">৳ <?php echo $course['price']; ?></span></div>
+                                        <a href="course-details.php?slug=<?php echo $course['slug']; ?>" class="btn-v2 text-decoration-none">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+                <div id="noDataMessage" class="col-12 text-center py-5" style="display: none;"><h3 class="text-muted">No courses found matching your criteria.</h3></div>
             </div>
         </div>
     </div>
 </div>
-<!-- Header End -->
 
-<!-- Courses Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
-            <h1 class="mb-5">Popular Courses</h1>
-        </div>
-        <div class="row g-4 justify-content-center">
-            <?php if (empty($courses)): ?>
-                <div class="col-12 text-center">
-                    <p>No courses available yet. Please check back later.</p>
-                </div>
-            <?php else: ?>
-                <?php foreach ($courses as $course): ?>
-                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="course-item bg-light">
-                            <div class="position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="<?php echo $course['thumbnail']; ?>" alt="<?php echo $course['title']; ?>">
-                                <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                    <a href="course-details.php?slug=<?php echo $course['slug']; ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                    <a href="enroll.php?id=<?php echo $course['id']; ?>" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
-                                </div>
-                            </div>
-                            <div class="text-center p-4 pb-0">
-                                <h3 class="mb-0">$<?php echo $course['price']; ?></h3>
-                                <div class="mb-3">
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small class="fa fa-star text-primary"></small>
-                                    <small>(123)</small>
-                                </div>
-                                <h5 class="mb-4"><?php echo $course['title']; ?></h5>
-                            </div>
-                            <div class="d-flex border-top">
-                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i><?php echo $course['instructor_name']; ?></small>
-                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
-                                <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-    </div>
-</div>
-<!-- Courses End -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const inputLeft = document.getElementById("input-left");
+        const inputRight = document.getElementById("input-right");
+        const thumbLeft = document.querySelector(".slider > .thumb.left");
+        const thumbRight = document.querySelector(".slider > .thumb.right");
+        const range = document.querySelector(".slider > .range");
+        const minDisplay = document.getElementById('minPriceDisplay');
+        const maxDisplay = document.getElementById('maxPriceDisplay');
+
+        function setLeftValue() {
+            const _this = inputLeft, min = parseInt(_this.min), max = parseInt(_this.max);
+            _this.value = Math.min(parseInt(_this.value), parseInt(inputRight.value) - 1);
+            const percent = ((_this.value - min) / (max - min)) * 100;
+            thumbLeft.style.left = percent + "%";
+            range.style.left = percent + "%";
+            minDisplay.innerText = '৳ ' + _this.value;
+            filterCourses();
+        }
+
+        function setRightValue() {
+            const _this = inputRight, min = parseInt(_this.min), max = parseInt(_this.max);
+            _this.value = Math.max(parseInt(_this.value), parseInt(inputLeft.value) + 1);
+            const percent = ((_this.value - min) / (max - min)) * 100;
+            thumbRight.style.right = (100 - percent) + "%";
+            range.style.right = (100 - percent) + "%";
+            maxDisplay.innerText = '৳ ' + _this.value;
+            filterCourses();
+        }
+
+        inputLeft.addEventListener("input", setLeftValue);
+        inputRight.addEventListener("input", setRightValue);
+
+        // Hover effects for thumbs
+        inputLeft.addEventListener("mouseover", () => thumbLeft.classList.add("hover"));
+        inputLeft.addEventListener("mouseout", () => thumbLeft.classList.remove("hover"));
+        inputRight.addEventListener("mouseover", () => thumbRight.classList.add("hover"));
+        inputRight.addEventListener("mouseout", () => thumbRight.classList.remove("hover"));
+
+        // General Filter Logic
+        const searchInput = document.getElementById('courseSearch');
+        const categoryCheckboxes = document.querySelectorAll('.category-filter');
+        const levelCheckboxes = document.querySelectorAll('.level-filter');
+        const courseItems = document.querySelectorAll('.course-item-v2');
+        const noDataMessage = document.getElementById('noDataMessage');
+
+        function filterCourses() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const minPrice = parseInt(inputLeft.value);
+            const maxPrice = parseInt(inputRight.value);
+            const selectedCategories = Array.from(categoryCheckboxes).filter(cb => cb.checked).map(cb => cb.value.toLowerCase());
+            const selectedLevels = Array.from(levelCheckboxes).filter(cb => cb.checked).map(cb => cb.value);
+
+            let visibleCount = 0;
+            courseItems.forEach(item => {
+                const title = item.getAttribute('data-title');
+                const category = item.getAttribute('data-category');
+                const price = parseInt(item.getAttribute('data-price'));
+                const level = item.getAttribute('data-level');
+
+                const matchesSearch = title.includes(searchTerm);
+                const matchesPrice = price >= minPrice && price <= maxPrice;
+                const matchesCategory = selectedCategories.length === 0 || selectedCategories.some(cat => category.includes(cat));
+                const matchesLevel = selectedLevels.length === 0 || selectedLevels.includes(level);
+
+                if (matchesSearch && matchesPrice && matchesCategory && matchesLevel) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            noDataMessage.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        searchInput.addEventListener('input', filterCourses);
+        categoryCheckboxes.forEach(cb => cb.addEventListener('change', filterCourses));
+        levelCheckboxes.forEach(cb => cb.addEventListener('change', filterCourses));
+
+        document.getElementById('clearFilters').addEventListener('click', () => {
+            searchInput.value = '';
+            inputLeft.value = 0;
+            inputRight.value = 100000;
+            categoryCheckboxes.forEach(cb => cb.checked = false);
+            levelCheckboxes.forEach(cb => cb.checked = false);
+            setLeftValue();
+            setRightValue();
+        });
+
+        // Initialize display
+        setLeftValue();
+        setRightValue();
+    });
+</script>
 
 <?php require_once 'includes/footer.php'; ?>

@@ -1,0 +1,344 @@
+
+/* Courses Page Custom Styles */
+:root {
+    --course-primary: #06BBCC;
+    --course-secondary: #f8f9fa;
+    --course-dark: #181d38;
+    --course-text: #555;
+    --glass-footer: rgba(255, 255, 255, 0.9);
+}
+
+/* Animations */
+@keyframes fadeInUpCourse {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.course-animate {
+    animation: fadeInUpCourse 0.6s ease forwards;
+}
+
+/* Sidebar Filter Layout */
+.filter-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    margin-bottom: 25px;
+    position: sticky;
+    top: 100px;
+}
+
+.filter-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.filter-items-list {
+    list-style: none;
+    padding: 0;
+}
+
+.filter-items-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.filter-items-list input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #28a745;
+    width: 17px;
+    height: 17px;
+}
+
+/* Refined Search Input */
+.search-input-group {
+    background: #fff;
+    border-radius: 8px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.search-input-group:focus-within {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.search-input-group i {
+    color: #666;
+    font-size: 1.1rem;
+    margin-right: 12px;
+}
+
+.search-input-group input {
+    background: transparent;
+    border: none;
+    padding: 8px 0;
+    width: 100%;
+    outline: none;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.search-input-group input::placeholder {
+    color: #999;
+}
+
+/* Dual Handle Price Slider */
+.middle {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 15px;
+}
+
+.slider {
+    position: relative;
+    z-index: 1;
+    height: 6px;
+    margin: 0 15px;
+}
+
+.slider > .track {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: #eee;
+}
+
+.slider > .range {
+    position: absolute;
+    z-index: 2;
+    left: 25%;
+    right: 25%;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: #28a745;
+}
+
+.slider > .thumb {
+    position: absolute;
+    z-index: 3;
+    width: 20px;
+    height: 20px;
+    background-color: #28a745;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(76,175,80,.1);
+    transition: box-shadow .3s ease-in-out;
+}
+
+.slider > .thumb.left {
+    left: 25%;
+    transform: translate(-10px, -7px);
+}
+
+.slider > .thumb.right {
+    right: 25%;
+    transform: translate(10px, -7px);
+}
+
+.slider > .thumb.hover {
+    box-shadow: 0 0 0 15px rgba(76,175,80,.1);
+}
+
+.slider > .thumb.active {
+    box-shadow: 0 0 0 25px rgba(76,175,80,.2);
+}
+
+input[type=range].price-input {
+    position: absolute;
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+    z-index: 2;
+    height: 10px;
+    width: 100%;
+    opacity: 0;
+}
+
+input[type=range].price-input::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+    border: 0 none;
+    background-color: red;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Course Card Refined */
+.course-card-v2 {
+    background: white;
+    border: 1px solid #efefef;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100%;
+    transition: 0.3s;
+}
+
+.course-card-v2:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.thumb-v2 {
+    position: relative;
+    height: 200px;
+}
+
+.thumb-v2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.off-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #28a745;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.content-v2 {
+    padding: 20px;
+}
+
+.title-v2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 15px;
+    height: 48px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.meta-v2 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.meta-v2 i {
+    margin-right: 5px;
+    color: #555;
+}
+
+.rating-v2 {
+    display: flex;
+    justify-content: flex-end;
+    color: #ffc107;
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+}
+
+.price-v2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.new-price {
+    font-weight: 700;
+    color: #28a745;
+    font-size: 1.1rem;
+}
+
+.btn-v2 {
+    background: #28a745;
+    color: white;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.btn-v2:hover {
+    background: #218838;
+    color: white;
+}
+
+.section-header-v2 {
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 40px;
+    background: #fff;
+}
+
+.section-header-v2 h1 {
+    font-size: 1.8rem;
+    color: #181d38;
+    margin: 0;
+}
+
+/* Category Filter Chips */
+.category-filter-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: none;
+}
+
+.category-filter-scroll::-webkit-scrollbar { display: none; }
+
+.filter-chip {
+    white-space: nowrap;
+    padding: 10px 25px;
+    border-radius: 50px;
+    background: #f8f9fa;
+    color: var(--course-text);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.filter-chip.active, .filter-chip:hover {
+    background: var(--course-primary);
+    color: white;
+    border-color: var(--course-primary);
+    box-shadow: 0 10px 20px rgba(6, 187, 204, 0.2);
+}
+
+@media (max-width: 768px) {
+    .category-filter-scroll { padding: 5px 0; }
+}
