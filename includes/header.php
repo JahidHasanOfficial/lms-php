@@ -29,6 +29,38 @@
 
     <!-- Template Stylesheet -->
     <link href="frontend-template/css/style.css" rel="stylesheet">
+    
+    <!-- Custom Theme Styles -->
+    <style>
+        :root {
+            --primary: #2BC5D4;
+        }
+        body {
+            background-color: #ebf8ff;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
+        .text-primary {
+            color: #2BC5D4 !important;
+        }
+        .bg-primary {
+            background-color: #2BC5D4 !important;
+        }
+        .btn-primary {
+            background-color: #2BC5D4 !important;
+            border-color: #2BC5D4 !important;
+        }
+        .btn-primary:hover {
+            background-color: #24a8b5 !important;
+            border-color: #24a8b5 !important;
+        }
+        .section-title::before, .section-title::after {
+            background: #2BC5D4 !important;
+        }
+        .back-to-top {
+            background-color: #2BC5D4 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -67,11 +99,158 @@
                     <a href="login.php" class="nav-item nav-link">Login</a>
                 <?php endif; ?>
             </div>
-            <?php if (!isset($_SESSION['user_id'])): ?>
-                <a href="register.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
-            <?php else: ?>
-                <span class="btn btn-light py-4 px-lg-5 d-none d-lg-block text-primary">Hi, <?php echo explode(' ', $_SESSION['user_name'])[0]; ?></span>
-            <?php endif; ?>
+            <div class="ms-lg-4 d-none d-lg-block">
+                <form action="courses.php" method="GET" class="position-relative" id="headerSearchForm">
+                    <div class="header-search-v3">
+                        <i class="fa fa-search search-icon-left text-success"></i>
+                        <input type="text" name="q" id="headerSearchInput" autocomplete="off" placeholder="কি শিখতে চান?..." value="<?php echo isset($_GET['q']) ? htmlspecialchars($_GET['q']) : ''; ?>" class="search-input-pill">
+                        
+                        <!-- Search Dropdown Results -->
+                        <div id="searchResultsDropdown" class="search-results-box shadow-lg d-none">
+                            <!-- Results inject here -->
+                        </div>
+
+                        <?php if(isset($_GET['q']) && $_GET['q'] != ''): ?>
+                            <a href="courses.php" class="clear-search-right text-decoration-none">
+                                <i class="fa fa-times text-primary"></i>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </form>
+            </div>
         </div>
     </nav>
     <!-- Navbar End -->
+
+    <style>
+    .header-search-v3 {
+        position: relative;
+        width: 320px;
+        z-index: 1000;
+    }
+    .search-input-pill {
+        width: 100%;
+        height: 48px;
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 50px;
+        padding: 0 45px 0 50px;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+    }
+    .search-input-pill:focus {
+        background: #fff;
+        outline: none;
+        border-color: #2BC5D4;
+        box-shadow: 0 4px 20px rgba(43, 197, 212, 0.15);
+    }
+    .search-icon-left {
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.1rem;
+        pointer-events: none;
+        z-index: 10;
+    }
+    .search-results-box {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        width: 400px;
+        background: #fff;
+        border-radius: 15px;
+        max-height: 450px;
+        overflow-y: auto;
+        border: 1px solid #edf2f7;
+        z-index: 9999;
+        padding: 10px 0;
+    }
+    .search-result-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        border-bottom: 1px solid #f7fafc;
+        transition: 0.2s;
+        text-decoration: none;
+        color: #2d3748;
+    }
+    .search-result-item:hover {
+        background: #f0f9ff;
+    }
+    .search-result-item img {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        object-fit: cover;
+        margin-right: 15px;
+    }
+    .search-result-item .title {
+        font-weight: 600;
+        font-size: 0.9rem;
+        line-height:1.3;
+    }
+    .search-result-item .price {
+        color: #2BC5D4;
+        font-weight: 700;
+        font-size: 0.85rem;
+    }
+    .clear-search-right {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 1rem;
+        z-index: 1001;
+    }
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('headerSearchInput');
+        const resultsBox = document.getElementById('searchResultsDropdown');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function() {
+                const query = this.value.trim();
+                
+                if (query.length > 1) {
+                    fetch(`api/search_courses.php?q=${encodeURIComponent(query)}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.length > 0) {
+                                let html = '';
+                                data.forEach(course => {
+                                    html += `
+                                        <a href="course-details.php?slug=${course.slug}" class="search-result-item">
+                                            <img src="${course.thumbnail}" alt="">
+                                            <div>
+                                                <div class="title">${course.title}</div>
+                                                <div class="price">৳${course.discount_price || course.price}</div>
+                                            </div>
+                                        </a>
+                                    `;
+                                });
+                                html += `<a href="courses.php?q=${encodeURIComponent(query)}" class="d-block text-center py-2 text-primary small fw-bold mt-2">সকল কোর্স দেখুন</a>`;
+                                resultsBox.innerHTML = html;
+                                resultsBox.classList.remove('d-none');
+                            } else {
+                                resultsBox.innerHTML = '<div class="text-center py-3 text-muted small">কোনো কোর্স পাওয়া যায়নি</div>';
+                                resultsBox.classList.remove('d-none');
+                            }
+                        });
+                } else {
+                    resultsBox.classList.add('d-none');
+                }
+            });
+
+            // Close results on click outside
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !resultsBox.contains(e.target)) {
+                    resultsBox.classList.add('d-none');
+                }
+            });
+        }
+    });
+    </script>

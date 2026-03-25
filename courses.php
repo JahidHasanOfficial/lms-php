@@ -33,7 +33,7 @@ require_once 'includes/header.php';
                         </div>
                         <div class="search-input-group mt-2">
                             <i class="fa fa-search"></i>
-                            <input type="text" id="courseSearch" placeholder="Search by course name...">
+                            <input type="text" id="courseSearch" placeholder="Search by course name..." value="<?php echo isset($_GET['q']) ? htmlspecialchars($_GET['q']) : ''; ?>">
                         </div>
                     </div>
 
@@ -221,6 +221,26 @@ require_once 'includes/header.php';
         // Initialize display
         setLeftValue();
         setRightValue();
+
+        // Auto-select category based on search results if q is present
+        if (searchInput.value.trim() !== '') {
+            const visibleItems = Array.from(courseItems).filter(item => item.style.display !== 'none');
+            if (visibleItems.length > 0) {
+                const categoriesToSelect = new Set();
+                visibleItems.forEach(item => {
+                    const cat = item.getAttribute('data-category');
+                    if (cat) categoriesToSelect.add(cat.toLowerCase());
+                });
+
+                categoryCheckboxes.forEach(cb => {
+                    if (categoriesToSelect.has(cb.value.toLowerCase())) {
+                        cb.checked = true;
+                    }
+                });
+                // Re-run filter to ensure everything is synced (though this is double filtering, it's safer)
+                filterCourses();
+            }
+        }
     });
 </script>
 

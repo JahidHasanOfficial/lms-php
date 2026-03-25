@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                <h6 class="section-title bg-white text-start text-primary pe-3"><?php echo $about_us['subtitle'] ?: 'About Us'; ?></h6>
+                <h6 class="section-title text-start text-primary pe-3"><?php echo $about_us['subtitle'] ?: 'About Us'; ?></h6>
                 <h1 class="mb-4"><?php echo $about_us['title'] ?: 'Welcome to Interactive Cares'; ?></h1>
                 <p class="mb-4"><?php echo nl2br($about_us['content'] ?: 'Tempor erat elitr rebum at clita...'); ?></p>
                 <div class="row gy-2 gx-4 mb-4">

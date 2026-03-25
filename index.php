@@ -29,7 +29,7 @@ require_once 'includes/header.php';
 // Home Page Sections
 include 'includes/home_sections/hero_home.php';
 include 'includes/home_sections/stats_home.php';
-include 'includes/home_sections/about_home.php';
+// include 'includes/home_sections/about_home.php';
 include 'includes/home_sections/categories_home.php';
 include 'includes/home_sections/courses_home.php';
 include 'includes/home_sections/team_home.php';
