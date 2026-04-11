@@ -1,8 +1,9 @@
 <!-- Success Story Start -->
 <div class="container-xxl py-5">
     <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h1 class="mb-5" style="font-size: 2.5rem; font-weight: 700; color: #111c26;">Our Students Success Story</h1>
+        <div class="d-flex justify-content-between align-items-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+            <h1 class="mb-0" style="font-size: 2.5rem; font-weight: 700; color: #111c26;">Our Students Success Story</h1>
+            <a href="success-story.php" class="btn btn-primary px-4 py-2 rounded-pill fw-bold">View All Stories</a>
         </div>
         <div class="owl-carousel success-story-carousel position-relative">
             <?php foreach ($success_stories as $s): ?>

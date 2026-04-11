@@ -207,7 +207,7 @@ include 'includes/header.php';
                   <!-- footer -->
                   <div class="container-fluid">
                      <div class="footer">
-                        <p>Copyright © 2026 Interactive Cares LMS. All rights reserved.</p>
+                        <p>Copyright © 2026 Prime University LMS. All rights reserved.</p>
                      </div>
                   </div>
                </div>
@@ -262,3 +262,4 @@ include 'includes/header.php';
       <script src="../backend-template/js/custom.js"></script>
    </body>
 </html>
+

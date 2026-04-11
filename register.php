@@ -34,6 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 require_once 'includes/header.php';
 ?>
+<?php 
+$pageTitle = "Create Account";
+include 'includes/breadcrumb.php'; 
+?>
 
 <div class="container-xxl py-5">
     <div class="container">

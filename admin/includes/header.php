@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>LMS Admin - Interactive Cares</title>
+      <title>LMS Admin - Prime University</title>
       <link rel="icon" href="../backend-template/images/fevicon.png" type="image/png" />
       <link rel="stylesheet" href="../backend-template/css/bootstrap.min.css" />
       <link rel="stylesheet" href="../backend-template/style.css" />
@@ -27,7 +27,7 @@
                      <div class="full">
                         <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                         <div class="logo_section">
-                           <a href="index.php" style="padding: 10px; font-weight: bold; font-size: 20px; color: white; display: inline-block;">Interactive Cares ADMIN</a>
+                           <a href="index.php" style="padding: 10px; font-weight: bold; font-size: 20px; color: white; display: inline-block;">Prime University ADMIN</a>
                         </div>
                         <div class="right_topbar">
                            <div class="icon_info">
@@ -49,3 +49,4 @@
                <!-- end topbar -->
                <div class="midde_cont">
                   <div class="container-fluid">
+

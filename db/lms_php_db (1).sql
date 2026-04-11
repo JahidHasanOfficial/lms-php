@@ -43,7 +43,7 @@ CREATE TABLE `about_us` (
 --
 
 INSERT INTO `about_us` (`id`, `subtitle`, `title`, `content`, `image`, `button_text`, `button_link`, `updated_at`) VALUES
-(1, 'ABOUT US', 'Welcome to Interactive Cares', 'Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.', 'uploads/about/1774252010_69c0efeacccb0.webp', 'Read More', '#', '2026-03-23 07:46:50');
+(1, 'ABOUT US', 'Welcome to Prime University', 'Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.', 'uploads/about/1774252010_69c0efeacccb0.webp', 'Read More', '#', '2026-03-23 07:46:50');
 
 -- --------------------------------------------------------
 
@@ -2582,3 +2582,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

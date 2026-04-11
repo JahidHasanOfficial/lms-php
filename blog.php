@@ -10,13 +10,11 @@ $blogs = $pdo->query("SELECT b.*, bc.name as category_name, (SELECT COUNT(*) FRO
 require_once 'includes/header.php';
 ?>
 
-<!-- Header Start -->
-<div class="container-fluid bg-primary py-5 mb-5 page-header">
-    <div class="container py-5 text-center">
-        <h1 class="display-3 text-white animated slideInDown">Our Latest Blogs</h1>
-    </div>
-</div>
-<!-- Header End -->
+<?php 
+$pageTitle = "Our Latest Blogs";
+$breadcrumbImage = "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1600&auto=format&fit=crop";
+include 'includes/breadcrumb.php'; 
+?>
 
 <div class="container-xxl py-5">
     <div class="container">

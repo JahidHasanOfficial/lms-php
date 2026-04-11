@@ -11,18 +11,14 @@ require_once 'includes/header.php';
 <!-- Custom Style Link -->
 <link href="frontend-template/css/courses-custom.css" rel="stylesheet">
 
-<div class="container-xxl py-5 bg-light" style="min-height: 100vh;">
-    <div class="container">
-        <!-- Main Header -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="section-header-v2 shadow-sm">
-                    <h1 class="fw-bold text-uppercase">All Courses</h1>
-                </div>
-            </div>
-        </div>
+<?php 
+$pageTitle = "All Courses";
+include 'includes/breadcrumb.php'; 
+?>
 
-        <div class="row g-4">
+<div class="container-xxl pb-5 bg-light" style="min-height: 100vh;">
+    <div class="container">
+        <div class="row g-4 mt-5">
             <!-- Sidebar Filters -->
             <div class="col-lg-3 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="filter-card shadow-sm">
@@ -108,7 +104,7 @@ require_once 'includes/header.php';
                                  data-wow-delay="0.1s">
                                 <div class="course-card-v2 shadow-sm">
                                     <div class="thumb-v2">
-                                        <img src="<?php echo $course['thumbnail']; ?>" alt="<?php echo $course['title']; ?>">
+                                        <img src="<?php echo $course['thumbnail']; ?>" alt="<?php echo $course['title']; ?>" loading="lazy">
                                         <span class="off-badge">৳ <?php echo ceil($course['price'] * 0.2); ?> off</span>
                                     </div>
                                     <div class="content-v2">

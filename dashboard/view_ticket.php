@@ -50,7 +50,7 @@ include 'includes/header.php';
                   </div>
                   <div>
                      <h6 class="mb-0 font-weight-bold">Support Team Response</h6>
-                     <small class="text-muted">Interactive Cares Mentor</small>
+                     <small class="text-muted">Prime University Mentor</small>
                   </div>
                </div>
                <p class="mb-0 italic text-secondary">
@@ -66,3 +66,4 @@ include 'includes/header.php';
 </div>
 
 <?php include 'includes/footer.php'; ?>
+

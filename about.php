@@ -8,7 +8,7 @@ $categoryObj = new Category($pdo);
 
 // Fetch Necessary Data
 $about_us = $pdo->query("SELECT * FROM about_us WHERE id = 1")->fetch();
-$team_members = $pdo->query("SELECT * FROM team_members WHERE status = 'active' ORDER BY id ASC")->fetchAll();
+$team_members = $pdo->query("SELECT * FROM team_members WHERE status = 'active' ORDER BY id ASC limit 8")->fetchAll();
 $home_partners = $pdo->query("SELECT * FROM home_partners WHERE status = 'active' ORDER BY id ASC")->fetchAll();
 $site_stats = $pdo->query("SELECT * FROM site_stats WHERE id = 1")->fetch();
 
@@ -19,24 +19,10 @@ require_once 'includes/header.php';
 <link href="frontend-template/css/about-custom.css" rel="stylesheet">
 
 <div class="about-page-wrapper">
-    <!-- Hero Section Start -->
-    <div class="container-fluid p-0 mb-5 overflow-hidden">
-        <div class="about-hero animate-up">
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="container py-5 text-center hero-content position-relative" style="z-index: 2;">
-                <h6 class="text-primary text-uppercase fw-bold mb-3 animate__animated animate__fadeIn" style="letter-spacing: 5px;">Interactive Cares</h6>
-                <h1 class="display-1 text-white mb-4 animate__animated animate__zoomIn">Designing The Future Of Learning</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center text-uppercase">
-                        <li class="breadcrumb-item"><a class="text-white" href="index.php">Home</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">About Us</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- Hero Section End -->
+<?php 
+$pageTitle = "About Us";
+include 'includes/breadcrumb.php'; 
+?>
 
     <!-- Partners Section Start -->
     <div class="container-fluid partners-section wow fadeInUp" data-wow-delay="0.1s">
@@ -66,7 +52,7 @@ require_once 'includes/header.php';
                 <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
                     <h6 class="section-title text-start bg-light text-primary pe-3">Our Identity</h6>
                     <h1 class="mb-4 display-5 fw-bold text-dark"><?php echo $about_us['title'] ?: 'Empowering Minds, Transforming Futures'; ?></h1>
-                    <p class="mb-4 lead text-secondary"><?php echo nl2br($about_us['subtitle'] ?: 'Interactive Cares is building a community of lifelong learners.'); ?></p>
+                    <p class="mb-4 lead text-secondary"><?php echo nl2br($about_us['subtitle'] ?: 'Prime University is building a community of lifelong learners.'); ?></p>
                     <div class="row g-4 mb-4">
                         <div class="col-sm-6">
                             <div class="value-item shadow-sm"><i class="fa fa-graduation-cap text-primary"></i>
@@ -137,7 +123,7 @@ require_once 'includes/header.php';
     <!-- Learning Process End -->
 
     <!-- Mentors Section Start -->
-    <div class="container-xxl py-5 mentors-section">
+    <!-- <div class="container-xxl py-5 mentors-section">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title text-center text-primary px-3">Expertise</h6>
@@ -167,7 +153,7 @@ require_once 'includes/header.php';
                 <?php endif; ?>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Mentors Section End -->
 
     <!-- Stats Section Start -->
@@ -204,7 +190,7 @@ require_once 'includes/header.php';
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                 <h6 class="section-title text-center text-primary px-3">Our World</h6>
-                <h1 class="mb-5 display-5 fw-bold">Life at Interactive Cares</h1>
+                <h1 class="mb-5 display-5 fw-bold">Life at Prime University</h1>
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -313,47 +299,6 @@ require_once 'includes/header.php';
     </div>
     <!-- Testimonial Section End -->
 
-    <!-- FAQ Section Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h6 class="section-title text-start text-primary pe-3">Common Queries</h6>
-                    <h1 class="mb-4 display-6 fw-bold">Frequently Asked Questions</h1>
-                    <div class="faq-container">
-                        <div class="faq-item">
-                            <div class="faq-header">
-                                <h5>Instructors?</h5><i class="fa fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-body">Industry experts with years of experience.</div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-header">
-                                <h5>Certificate?</h5><i class="fa fa-chevron-down"></i>
-                            </div>
-                            <div class="faq-body">Globally recognized certificate upon completion.</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="rounded p-5 bg-light shadow-lg position-relative overflow-hidden">
-                        <div class="floating-shape shape-2" style="opacity: 0.05;"></div>
-                        <h3 class="fw-bold mb-4">Have Questions?</h3>
-                        <form>
-                            <div class="row g-3">
-                                <div class="col-md-6"><input type="text" class="form-control border-white py-3" placeholder="Name"></div>
-                                <div class="col-md-6"><input type="email" class="form-control border-white py-3" placeholder="Email"></div>
-                                <div class="col-12"><textarea class="form-control border-white" placeholder="Message" style="height: 150px"></textarea></div>
-                                <div class="col-12"><button class="btn btn-gradient w-100 py-3 rounded-pill" type="submit">Send Message</button></div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- FAQ Section End -->
-
     <!-- CTA Section Start -->
     <div class="container-fluid bg-primary py-5 my-5 wow zoomIn" data-wow-delay="0.1s">
         <div class="container py-5 text-center">
@@ -413,3 +358,4 @@ require_once 'includes/header.php';
 </script>
 
 <?php require_once 'includes/footer.php'; ?>
+

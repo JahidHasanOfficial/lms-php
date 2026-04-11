@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Interactive Cares LMS</title>
+    <title>Prime University LMS</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -75,32 +75,33 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.php" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Interactive Cares</h2>
+        <a href="index" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Prime University</h2>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.php" class="nav-item nav-link active">Home</a>
-                <a href="about.php" class="nav-item nav-link">About</a>
-                <a href="courses.php" class="nav-item nav-link">Courses</a>
-                <a href="blog.php" class="nav-item nav-link">Blog</a>
-                <a href="#testimonial" class="nav-item nav-link">Success Stories</a>
-                <a href="contact.php" class="nav-item nav-link">Contact</a>
+                <a href="index" class="nav-item nav-link active">Home</a>
+                <a href="about" class="nav-item nav-link">About</a>
+                <a href="courses" class="nav-item nav-link">Courses</a>
+                <a href="teachers" class="nav-item nav-link">Mentors</a>
+                <a href="blog" class="nav-item nav-link">Blog</a>
+                <a href="success-story" class="nav-item nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'success-story' ? 'active' : ''; ?>">Success Stories</a>
+                <a href="contact" class="nav-item nav-link">Contact</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="dashboard.php" class="nav-item nav-link">Dashboard</a>
+                    <a href="dashboard" class="nav-item nav-link">Dashboard</a>
                     <?php if ($_SESSION['user_role'] === 'admin' || $_SESSION['user_role'] === 'instructor'): ?>
-                        <a href="admin/index.php" class="nav-item nav-link text-primary font-weight-bold">Admin Panel</a>
+                        <a href="admin/index" class="nav-item nav-link text-primary font-weight-bold">Admin Panel</a>
                     <?php endif; ?>
-                    <a href="logout.php" class="nav-item nav-link">Logout</a>
+                    <a href="logout" class="nav-item nav-link">Logout</a>
                 <?php else: ?>
-                    <a href="login.php" class="nav-item nav-link">Login</a>
+                    <a href="login" class="nav-item nav-link">Login</a>
                 <?php endif; ?>
             </div>
             <div class="ms-lg-4 d-none d-lg-block">
-                <form action="courses.php" method="GET" class="position-relative" id="headerSearchForm">
+                <form action="courses" method="GET" class="position-relative" id="headerSearchForm">
                     <div class="header-search-v3">
                         <i class="fa fa-search search-icon-left text-success"></i>
                         <input type="text" name="q" id="headerSearchInput" autocomplete="off" placeholder="কি শিখতে চান?..." value="<?php echo isset($_GET['q']) ? htmlspecialchars($_GET['q']) : ''; ?>" class="search-input-pill">
@@ -111,7 +112,7 @@
                         </div>
 
                         <?php if(isset($_GET['q']) && $_GET['q'] != ''): ?>
-                            <a href="courses.php" class="clear-search-right text-decoration-none">
+                            <a href="courses" class="clear-search-right text-decoration-none">
                                 <i class="fa fa-times text-primary"></i>
                             </a>
                         <?php endif; ?>
@@ -254,3 +255,4 @@
         }
     });
     </script>
+

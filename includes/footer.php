@@ -59,7 +59,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Interactive Cares</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="#">Prime University</a>, All Right Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
@@ -93,3 +93,4 @@
 </body>
 
 </html>
+

@@ -27,7 +27,10 @@ if (isLoggedIn()) {
 
 require_once 'includes/header.php';
 ?>
-
+<?php 
+$breadcrumbTitle = "Blog Details";
+include 'includes/breadcrumb.php'; 
+?>
 <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-5">

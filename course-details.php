@@ -260,22 +260,20 @@ body {
 }
 </style>
 
-<!-- Top Hero Section -->
-<section class="premium-course-header">
-    <div class="container position-relative">
+<?php 
+$breadcrumbTitle = $course['title'];
+$isFullWidth = true;
+include 'includes/breadcrumb.php'; 
+?>
+
+<section class="py-5">
+    <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
-                <nav aria-label="breadcrumb" class="mb-4">
-                    <ol class="breadcrumb breadcrumb-custom bg-transparent p-0 small">
-                        <li class="breadcrumb-item"><a href="index.php" class="text-muted">Home</a></li>
-                        <li class="breadcrumb-item"><a href="courses.php" class="text-muted">Career Paths</a></li>
-                        <li class="breadcrumb-item active text-white"><?php echo $course['title']; ?></li>
-                    </ol>
-                </nav>
-                <h1 class="font-weight-bold display-4 mb-3" style="color: dark;"><?php echo $course['title']; ?> <span class="text-primary-neon" style="color:var(--primary-neon);">+</span></h1>
-                <p class="lead opacity-75 mb-5" style="max-width: 600px; font-size: 1rem; line-height: 1.8;">
+                <p class="lead opacity-75 mb-5" style="max-width: 600px; font-size: 1.1rem; line-height: 1.8; color: #444;">
                     <?php echo strip_tags($course['description']); ?>
                 </p>
+
 
                 <div class="d-flex align-items-center mb-5">
                     <?php 
@@ -552,7 +550,7 @@ body {
 <!-- Platform Benefits Section -->
 <section class="platform-benefits-section py-5 my-5" style="background-color: #f8fafc; border: 1px solid rgba(0,0,0,0.05); border-radius: 24px; color: #1e293b; margin-inline: 15px;">
     <div class="container text-center py-4">
-        <h2 class="font-weight-bold mb-3" style="font-size: 2.2rem; color: #1e293b;">Interactive Cares এর কোর্স ও ক্যারিয়ার পাথগুলোর বেনিফিট</h2>
+        <h2 class="font-weight-bold mb-3" style="font-size: 2.2rem; color: #1e293b;">Prime University এর কোর্স ও ক্যারিয়ার পাথগুলোর বেনিফিট</h2>
         <p class="text-muted mb-5 mx-auto" style="max-width: 800px;">ইন্ডাস্ট্রি স্ট্যান্ডার্ড আউটলাইন এবং দেশসেরা মেন্টরদের গাইডেন্সে নিজেকে প্রিপেয়ার করুন জব মার্কেটের জন্য!</p>
         
         <div class="row g-4 px-lg-5">
@@ -660,3 +658,4 @@ document.querySelectorAll('.section-trigger').forEach(anchor => {
 </script>
 
 <?php include 'includes/footer.php'; ?>
+
