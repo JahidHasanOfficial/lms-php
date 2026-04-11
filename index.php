@@ -13,7 +13,7 @@ $categories = $categoryObj->getAll();
 $hero_slides = $pdo->query("SELECT * FROM hero_slides WHERE status = 'active' ORDER BY id DESC")->fetchAll();
 $site_features = $pdo->query("SELECT * FROM site_features ORDER BY id ASC")->fetchAll();
 $about_us = $pdo->query("SELECT * FROM about_us WHERE id = 1")->fetch();
-$team_members = $pdo->query("SELECT * FROM team_members WHERE status = 'active' ORDER BY id ASC")->fetchAll();
+$team_members = $pdo->query("SELECT * FROM team_members WHERE status = 'active' ORDER BY id ASC LIMIT 8")->fetchAll();
 $testimonials = $pdo->query("SELECT * FROM testimonials WHERE status = 'active' ORDER BY id DESC")->fetchAll();
 $success_stories = $pdo->query("SELECT * FROM success_stories WHERE status = 'active' ORDER BY id DESC")->fetchAll();
 $gallery_images = $pdo->query("SELECT * FROM image_gallery WHERE status = 'active' ORDER BY id DESC LIMIT 12")->fetchAll();
@@ -29,7 +29,6 @@ require_once 'includes/header.php';
 // Home Page Sections
 include 'includes/home_sections/hero_home.php';
 include 'includes/home_sections/stats_home.php';
-// include 'includes/home_sections/about_home.php';
 include 'includes/home_sections/categories_home.php';
 include 'includes/home_sections/courses_home.php';
 include 'includes/home_sections/team_home.php';

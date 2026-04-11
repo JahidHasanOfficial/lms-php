@@ -22,6 +22,7 @@
         'blog.php' => 'assets/img/carousel-1.jpg',
         'blog_details.php' => 'assets/img/carousel-1.jpg',
         'teachers.php' => 'assets/img/carousel-1.jpg',
+        'gallery.php' => 'assets/img/cat-1.jpg',
         'login.php' => 'assets/img/carousel-2.jpg',
         'register.php' => 'assets/img/carousel-2.jpg',
         'checkout.php' => 'assets/img/carousel-2.jpg',
