@@ -27,7 +27,10 @@
                      <div class="full">
                         <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                         <div class="logo_section">
-                           <a href="index.php" style="padding: 10px; font-weight: bold; font-size: 20px; color: white; display: inline-block;">Prime University ADMIN</a>
+                           <a href="index.php" style="display: flex; align-items: center; padding: 5px 15px;">
+                               <img src="../assets/img/logo.png" alt="logo" style="max-height: 40px; margin-right: 10px;" />
+                               <span style="color: white; font-weight: bold; font-size: 18px;">ADMIN</span>
+                           </a>
                         </div>
                         <div class="right_topbar">
                            <div class="icon_info">

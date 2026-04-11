@@ -33,7 +33,7 @@ $course_data = [
     'Web Development Bootcamp',
     'web-dev-bootcamp',
     'Learn HTML, CSS, JS and PHP from scratch.',
-    'frontend-template/img/course-1.jpg',
+    'assets/img/course-1.jpg',
     99.99,
     $category_id,
     $instructor_id,
@@ -56,3 +56,4 @@ if ($section_id) {
 
 echo "Seeding completed successfully!";
 ?>
+

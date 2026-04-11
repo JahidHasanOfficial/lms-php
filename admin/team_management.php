@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $total_students = sanitize($_POST['total_students'] ?? '');
     
     if (isset($_POST['add_member'])) {
-        $imagePath = 'frontend-template/img/team-1.jpg';
+        $imagePath = 'assets/img/team-1.jpg';
         if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
             $uploaded = ImageHelper::upload($_FILES['image'], '../uploads/team/');
             if ($uploaded) $imagePath = str_replace('../', '', $uploaded);
@@ -186,3 +186,4 @@ document.querySelectorAll('.edit-btn').forEach(btn => {
 </script>
 
 <?php include 'includes/footer.php'; ?>
+

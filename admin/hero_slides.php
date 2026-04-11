@@ -13,7 +13,7 @@ $hero = $stmt->fetch();
 
 // If record missing, seed it back
 if (!$hero) {
-    $pdo->query("INSERT INTO hero_slides (id, subtitle, title, description, image) VALUES (1, 'Best Online Courses', 'The Best Online Learning Platform', 'Discover professional courses that will help you grow your skills.', 'frontend-template/img/carousel-1.jpg')");
+    $pdo->query("INSERT INTO hero_slides (id, subtitle, title, description, image) VALUES (1, 'Best Online Courses', 'The Best Online Learning Platform', 'Discover professional courses that will help you grow your skills.', 'assets/img/carousel-1.jpg')");
     $hero = $pdo->query("SELECT * FROM hero_slides WHERE id = 1")->fetch();
 }
 
@@ -146,3 +146,4 @@ include 'includes/header.php';
 </div>
 
 <?php include 'includes/footer.php'; ?>
+

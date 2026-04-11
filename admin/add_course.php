@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $courseObj = new Course($pdo);
     
     // Handle Thumbnail Upload
-    $thumbnail = 'frontend-template/img/course-1.jpg'; // Default
+    $thumbnail = 'assets/img/course-1.jpg'; // Default
     if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] === 0) {
         $uploadDir = '../uploads/courses/';
         if (!is_dir($uploadDir)) mkdir($uploadDir, 0777, true);
@@ -141,3 +141,4 @@ include 'includes/header.php';
 </div>
 
 <?php include 'includes/footer.php'; ?>
+

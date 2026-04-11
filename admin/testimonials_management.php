@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $feedback = $_POST['feedback'];
     
     if (isset($_POST['add_testimonial'])) {
-        $imagePath = 'frontend-template/img/testimonial-1.jpg';
+        $imagePath = 'assets/img/testimonial-1.jpg';
         if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
             $uploaded = ImageHelper::upload($_FILES['image'], '../uploads/testimonials/');
             if ($uploaded) $imagePath = str_replace('../', '', $uploaded);
@@ -183,3 +183,4 @@ document.querySelectorAll('.edit-testimonial-btn').forEach(btn => {
 </script>
 
 <?php include 'includes/footer.php'; ?>
+

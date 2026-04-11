@@ -9,7 +9,7 @@ require_once 'includes/header.php';
 ?>
 
 <!-- Custom Style Link -->
-<link href="frontend-template/css/courses-custom.css" rel="stylesheet">
+<link href="assets/css/courses-custom.css" rel="stylesheet">
 
 <?php 
 $pageTitle = "All Courses";
@@ -241,3 +241,4 @@ include 'includes/breadcrumb.php';
 </script>
 
 <?php require_once 'includes/footer.php'; ?>
+

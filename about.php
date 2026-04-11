@@ -16,7 +16,7 @@ require_once 'includes/header.php';
 ?>
 
 <!-- Custom Style Link -->
-<link href="frontend-template/css/about-custom.css" rel="stylesheet">
+<link href="assets/css/about-custom.css" rel="stylesheet">
 
 <div class="about-page-wrapper">
 <?php 
@@ -42,9 +42,9 @@ include 'includes/breadcrumb.php';
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
                     <div class="experience-image-wrapper">
-                        <img class="img-fluid w-100" src="<?php echo $about_us['image'] ?: 'frontend-template/img/about.jpg'; ?>" alt="About" style="min-height: 500px; object-fit: cover;">
+                        <img class="img-fluid w-100" src="<?php echo $about_us['image'] ?: 'assets/img/about.jpg'; ?>" alt="About" style="min-height: 500px; object-fit: cover;">
                         <div class="experience-badge animate__animated animate__pulse animate__infinite">
-                            <h2>15+</h2>
+                            <h2>24</h2>
                             <p>Years of <br> Excellence</p>
                         </div>
                     </div>
@@ -71,7 +71,7 @@ include 'includes/breadcrumb.php';
                             <div class="btn-lg-square bg-primary text-white rounded-circle shadow"><i class="fa fa-phone-alt"></i></div>
                             <div class="ms-3">
                                 <p class="mb-1 text-secondary">Contact Us</p>
-                                <h5 class="mb-0 text-dark fw-bold">+012 345 6789</h5>
+                                <h5 class="mb-0 text-dark fw-bold">01969-955566</h5>
                             </div>
                         </div>
                     </div>
@@ -172,12 +172,12 @@ include 'includes/breadcrumb.php';
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fa fa-chalkboard-teacher"></i></div><span class="stat-number">150+</span><span class="stat-label">Expert Mentors</span>
+                        <div class="stat-icon"><i class="fa fa-chalkboard-teacher"></i></div><span class="stat-number"><?php echo $site_stats['instructors_count'] ?: '100'; ?>+</span><span class="stat-label">Expert Mentors</span>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fa fa-award"></i></div><span class="stat-number">95%</span><span class="stat-label">Success Rate</span>
+                        <div class="stat-icon"><i class="fa fa-award"></i></div><span class="stat-number">98%</span><span class="stat-label">Success Rate</span>
                     </div>
                 </div>
             </div>
@@ -194,21 +194,21 @@ include 'includes/breadcrumb.php';
             </div>
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="gallery-item"><img src="frontend-template/img/cat-1.jpg" alt="Culture 1">
+                    <div class="gallery-item"><img src="assets/img/cat-1.jpg" alt="Culture 1">
                         <div class="gallery-overlay">
                             <h5>Innovation Hub</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="gallery-item"><img src="frontend-template/img/cat-2.jpg" alt="Culture 2">
+                    <div class="gallery-item"><img src="assets/img/cat-2.jpg" alt="Culture 2">
                         <div class="gallery-overlay">
                             <h5>Global Workspace</h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="gallery-item"><img src="frontend-template/img/cat-3.jpg" alt="Culture 3">
+                    <div class="gallery-item"><img src="assets/img/cat-3.jpg" alt="Culture 3">
                         <div class="gallery-overlay">
                             <h5>Student Meetups</h5>
                         </div>
@@ -229,26 +229,26 @@ include 'includes/breadcrumb.php';
             <div class="timeline">
                 <div class="timeline-item left wow slideInLeft" data-wow-delay="0.1s">
                     <div class="timeline-content">
-                        <h5 class="fw-bold text-primary">2010 - The Beginning</h5>
-                        <p class="mb-0 text-secondary">Started as a small tutoring center with a vision to revolutionize learning through digital media.</p>
+                        <h5 class="fw-bold text-primary">2002 - The Foundation</h5>
+                        <p class="mb-0 text-secondary">Prime University was established by Prime University Trust with a mission to provide high-quality education.</p>
                     </div>
                 </div>
                 <div class="timeline-item right wow slideInRight" data-wow-delay="0.2s">
                     <div class="timeline-content">
-                        <h5 class="fw-bold text-primary">2015 - Going Digital</h5>
-                        <p class="mb-0 text-secondary">Launched our first online platform, reaching students across the nation for the first time.</p>
+                        <h5 class="fw-bold text-primary">2008 - Expansion</h5>
+                        <p class="mb-0 text-secondary">Introduced several new departments including CSE, EEE, and Law to cater to growing industrial needs.</p>
                     </div>
                 </div>
                 <div class="timeline-item left wow slideInLeft" data-wow-delay="0.3s">
                     <div class="timeline-content">
-                        <h5 class="fw-bold text-primary">2020 - Global Reach</h5>
-                        <p class="mb-0 text-secondary">Expanded services internationally and introduced mentor-based learning models.</p>
+                        <h5 class="fw-bold text-primary">2015 - Permanent Campus</h5>
+                        <p class="mb-0 text-secondary">Moved to state-of-the-art permanent campus facilities in Mirpur-1, Dhaka.</p>
                     </div>
                 </div>
                 <div class="timeline-item right wow slideInRight" data-wow-delay="0.4s">
                     <div class="timeline-content">
-                        <h5 class="fw-bold text-primary">Today - EdTech Leader</h5>
-                        <p class="mb-0 text-secondary">Leading the industry with 200+ courses and a community of 50k+ active learners.</p>
+                        <h5 class="fw-bold text-primary">Today - Global Excellence</h5>
+                        <p class="mb-0 text-secondary">Leading higher education in Bangladesh with 8000+ students and global academic recognition.</p>
                     </div>
                 </div>
             </div>
@@ -267,7 +267,7 @@ include 'includes/breadcrumb.php';
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="testimonial-box"><i class="fa fa-quote-right quote-icon"></i>
                         <p class="mb-0">This platform changed my life! Practical courses for real-world jobs.</p>
-                        <div class="testimonial-user"><img src="frontend-template/img/testimonial-1.jpg" alt="User 1">
+                        <div class="testimonial-user"><img src="assets/img/testimonial-1.jpg" alt="User 1">
                             <div>
                                 <h6>Rubens Davis</h6><small>Software Engineer</small>
                             </div>
@@ -277,7 +277,7 @@ include 'includes/breadcrumb.php';
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="testimonial-box"><i class="fa fa-quote-right quote-icon"></i>
                         <p class="mb-0">Interactive learning at its best. Career growth is guaranteed.</p>
-                        <div class="testimonial-user"><img src="frontend-template/img/testimonial-2.jpg" alt="User 2">
+                        <div class="testimonial-user"><img src="assets/img/testimonial-2.jpg" alt="User 2">
                             <div>
                                 <h6>Jesicca Doe</h6><small>UX Designer</small>
                             </div>
@@ -287,7 +287,7 @@ include 'includes/breadcrumb.php';
                 <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="testimonial-box"><i class="fa fa-quote-right quote-icon"></i>
                         <p class="mb-0">Bridges the gap between theory and industry reality perfectly.</p>
-                        <div class="testimonial-user"><img src="frontend-template/img/testimonial-3.jpg" alt="User 3">
+                        <div class="testimonial-user"><img src="assets/img/testimonial-3.jpg" alt="User 3">
                             <div>
                                 <h6>Alex Morgan</h6><small>Data Scientist</small>
                             </div>
@@ -358,4 +358,5 @@ include 'includes/breadcrumb.php';
 </script>
 
 <?php require_once 'includes/footer.php'; ?>
+
 

@@ -12,20 +12,20 @@
     // Detect current page filename
     $currentPage = basename($_SERVER['PHP_SELF']);
     
-    // Map pages to images in frontend-template/img/
+    // Map pages to images in assets/img/
     $pageImageMap = [
-        'about.php' => 'frontend-template/img/about.jpg',
-        'courses.php' => 'frontend-template/img/carousel-1.jpg',
-        'course-details.php' => 'frontend-template/img/carousel-2.jpg',
-        'success-story.php' => 'frontend-template/img/cat-3.jpg',
-        'contact.php' => 'frontend-template/img/cat-4.jpg',
-        'blog.php' => 'frontend-template/img/carousel-1.jpg',
-        'blog_details.php' => 'frontend-template/img/carousel-1.jpg',
-        'teachers.php' => 'frontend-template/img/carousel-1.jpg',
-        'login.php' => 'frontend-template/img/carousel-2.jpg',
-        'register.php' => 'frontend-template/img/carousel-2.jpg',
-        'checkout.php' => 'frontend-template/img/carousel-2.jpg',
-        'enroll.php' => 'frontend-template/img/carousel-2.jpg',
+        'about.php' => 'assets/img/about.jpg',
+        'courses.php' => 'assets/img/carousel-1.jpg',
+        'course-details.php' => 'assets/img/carousel-2.jpg',
+        'success-story.php' => 'assets/img/cat-3.jpg',
+        'contact.php' => 'assets/img/cat-4.jpg',
+        'blog.php' => 'assets/img/carousel-1.jpg',
+        'blog_details.php' => 'assets/img/carousel-1.jpg',
+        'teachers.php' => 'assets/img/carousel-1.jpg',
+        'login.php' => 'assets/img/carousel-2.jpg',
+        'register.php' => 'assets/img/carousel-2.jpg',
+        'checkout.php' => 'assets/img/carousel-2.jpg',
+        'enroll.php' => 'assets/img/carousel-2.jpg',
     ];
 
     // Default image if no mapping exists
@@ -124,3 +124,4 @@
         </div>
     </div>
 </section>
+

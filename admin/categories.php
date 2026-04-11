@@ -46,7 +46,7 @@ include 'includes/header.php';
                      <?php foreach ($categories as $cat): ?>
                      <tr>
                         <td><?php echo $cat['id']; ?></td>
-                        <td><img src="../<?php echo $cat['image'] ?: 'frontend-template/img/cat-1.jpg'; ?>" width="60" class="rounded shadow-sm"></td>
+                        <td><img src="../<?php echo $cat['image'] ?: 'assets/img/cat-1.jpg'; ?>" width="60" class="rounded shadow-sm"></td>
                         <td><?php echo $cat['name']; ?></td>
                         <td><?php echo $cat['slug']; ?></td>
                         <td><?php echo date('M d, Y', strtotime($cat['created_at'])); ?></td>
@@ -65,3 +65,4 @@ include 'includes/header.php';
 </div>
 
 <?php include 'includes/footer.php'; ?>
+

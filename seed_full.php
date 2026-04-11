@@ -42,7 +42,7 @@ foreach ($catNames as $index => $name) {
         $name,
         $slug,
         "Master the art of $name with our expert-led courses.",
-        "frontend-template/img/cat-" . (($index % 4) + 1) . ".jpg"
+        "assets/img/cat-" . (($index % 4) + 1) . ".jpg"
     ]);
 }
 echo "- Seeded 10 categories.\n";
@@ -60,7 +60,7 @@ for ($i = 1; $i <= 10; $i++) {
         "Advanced Course $i",
         "advanced-course-$i",
         "This is a comprehensive guide to mastering the topics covered in Course $i. You will learn everything from basics to advanced levels.",
-        "frontend-template/img/course-" . (($i % 3) + 1) . ".jpg",
+        "assets/img/course-" . (($i % 3) + 1) . ".jpg",
         rand(50, 100) . ".00",
         rand(30, 49) . ".99",
         $categoryIds[array_rand($categoryIds)],
@@ -83,7 +83,7 @@ for ($i = 1; $i <= 10; $i++) {
     // Seed Projects for each course
     for ($p = 1; $p <= 2; $p++) {
         $pdo->prepare("INSERT INTO course_projects (course_id, title, image, description) VALUES (?, ?, ?, ?)")
-            ->execute([$courseId, "Project $p: Real World App", "frontend-template/img/course-1.jpg", "A hands-on project that teaches you industry best practices."]);
+            ->execute([$courseId, "Project $p: Real World App", "assets/img/course-1.jpg", "A hands-on project that teaches you industry best practices."]);
     }
 
     // NEW: Seed Multiple Instructors (2-3 per course)
@@ -137,3 +137,4 @@ echo "- Seeded curriculum for all courses.\n";
 
 echo "Seeding completed successfully!\n";
 ?>
+

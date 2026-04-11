@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $video = sanitize($_POST['video_url']);
     
     if (isset($_POST['add_story'])) {
-        $imgPath = 'frontend-template/img/course-1.jpg';
+        $imgPath = 'assets/img/course-1.jpg';
         if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] === 0) {
             $uploaded = ImageHelper::upload($_FILES['thumbnail'], '../uploads/stories/');
             if ($uploaded) $imgPath = str_replace('../', '', $uploaded);
@@ -178,3 +178,4 @@ document.querySelectorAll('.edit-story-btn').forEach(btn => {
 </script>
 
 <?php include 'includes/footer.php'; ?>
+

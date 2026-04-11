@@ -187,7 +187,7 @@ include 'includes/breadcrumb.php';
                         <i class="fa fa-map-marker-alt"></i>
                     </div>
                     <h5>Our Office</h5>
-                    <p>H-15, Road-04, Block-A,<br>Banani, Dhaka-1213, Bangladesh</p>
+                    <p>114/116 Mazar Road, Mirpur-1,<br>Dhaka-1216, Bangladesh</p>
                 </div>
             </div>
             <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
@@ -196,7 +196,7 @@ include 'includes/breadcrumb.php';
                         <i class="fa fa-phone-alt"></i>
                     </div>
                     <h5>Call Us</h5>
-                    <p>+880 1700 000 000<br>Mon - Sat (10am - 8pm)</p>
+                    <p>01969-955566<br>Sun - Sat (9am - 5pm)</p>
                 </div>
             </div>
             <div class="col-md-4 wow fadeInUp" data-wow-delay="0.3s">
@@ -205,7 +205,7 @@ include 'includes/breadcrumb.php';
                         <i class="fa fa-envelope"></i>
                     </div>
                     <h5>Email Us</h5>
-                    <p>support@interactivecares.com<br>info@interactivecares.com</p>
+                    <p>info@primeuniversity.ac.bd<br>admission@primeuniversity.ac.bd</p>
                 </div>
             </div>
         </div>
@@ -259,7 +259,7 @@ include 'includes/breadcrumb.php';
             <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.1s">
                 <div class="map-container">
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14604.424270273766!2d90.39568777174411!3d23.797911438914614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70e06000001%3A0xe74e92b8d03099c2!2sBanani%20Model%20Town%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1692186000000!5m2!1sen!2sbd" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.2195706014956!2d90.34560931498184!3d23.790663984524957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9cb8a002d35%3A0xf36071651f4f6585!2sPrime%20University!5e0!3m2!1sen!2sbd!4v1680000000000!5m2!1sen!2sbd" 
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>

@@ -140,16 +140,16 @@ CREATE TABLE `blogs` (
 --
 
 INSERT INTO `blogs` (`id`, `category_id`, `title`, `slug`, `content`, `image`, `author_id`, `status`, `created_at`) VALUES
-(1, 1, 'Future of Web Development in 2026', 'future-web-dev', 'Content for future web dev...', 'frontend-template/img/course-1.jpg', 1, 'published', '2026-03-23 14:50:37'),
-(2, 1, 'Why Choose React for Large Scale Apps', 'choose-react', 'Content for react apps...', 'frontend-template/img/course-2.jpg', 1, 'published', '2026-03-23 14:50:37'),
-(3, 2, 'Top 10 Learning Strategies for Students', 'learning-strategies', 'Content for learning strategies...', 'frontend-template/img/course-3.jpg', 1, 'published', '2026-03-23 14:50:37'),
-(4, 3, 'How to Crack Your First Software Job Interview', 'first-job-interview', 'Content for job interview...', 'frontend-template/img/course-1.jpg', 1, 'published', '2026-03-23 14:50:37'),
-(5, 1, 'Node.js vs Python for Backend', 'node-vs-python', 'Content for node vs python...', 'frontend-template/img/course-2.jpg', 1, 'published', '2026-03-23 14:50:37'),
-(6, 2, 'Importance of Continuous Learning', 'continuous-learning', 'Content for learning...', 'frontend-template/img/course-3.jpg', 1, 'published', '2026-03-23 14:50:37'),
-(7, 3, 'Building a Strong Portfolio in 2026', 'strong-portfolio', 'Content for portfolio...', 'frontend-template/img/course-1.jpg', 1, 'published', '2026-03-23 14:50:37'),
-(8, 1, 'Machine Learning for Web Developers', 'ml-for-web', 'Content for ML...', 'frontend-template/img/course-2.jpg', 1, 'published', '2026-03-23 14:50:37'),
-(9, 2, 'Online Education: Trends and Challenges', 'online-edu-trends', 'Content for edu trends...', 'frontend-template/img/course-3.jpg', 1, 'published', '2026-03-23 14:50:37'),
-(10, 3, 'Effective Time Management for Freelancers', 'time-management', 'Content for time management...', 'frontend-template/img/course-1.jpg', 1, 'published', '2026-03-23 14:50:37');
+(1, 1, 'Future of Web Development in 2026', 'future-web-dev', 'Content for future web dev...', 'assets/img/course-1.jpg', 1, 'published', '2026-03-23 14:50:37'),
+(2, 1, 'Why Choose React for Large Scale Apps', 'choose-react', 'Content for react apps...', 'assets/img/course-2.jpg', 1, 'published', '2026-03-23 14:50:37'),
+(3, 2, 'Top 10 Learning Strategies for Students', 'learning-strategies', 'Content for learning strategies...', 'assets/img/course-3.jpg', 1, 'published', '2026-03-23 14:50:37'),
+(4, 3, 'How to Crack Your First Software Job Interview', 'first-job-interview', 'Content for job interview...', 'assets/img/course-1.jpg', 1, 'published', '2026-03-23 14:50:37'),
+(5, 1, 'Node.js vs Python for Backend', 'node-vs-python', 'Content for node vs python...', 'assets/img/course-2.jpg', 1, 'published', '2026-03-23 14:50:37'),
+(6, 2, 'Importance of Continuous Learning', 'continuous-learning', 'Content for learning...', 'assets/img/course-3.jpg', 1, 'published', '2026-03-23 14:50:37'),
+(7, 3, 'Building a Strong Portfolio in 2026', 'strong-portfolio', 'Content for portfolio...', 'assets/img/course-1.jpg', 1, 'published', '2026-03-23 14:50:37'),
+(8, 1, 'Machine Learning for Web Developers', 'ml-for-web', 'Content for ML...', 'assets/img/course-2.jpg', 1, 'published', '2026-03-23 14:50:37'),
+(9, 2, 'Online Education: Trends and Challenges', 'online-edu-trends', 'Content for edu trends...', 'assets/img/course-3.jpg', 1, 'published', '2026-03-23 14:50:37'),
+(10, 3, 'Effective Time Management for Freelancers', 'time-management', 'Content for time management...', 'assets/img/course-1.jpg', 1, 'published', '2026-03-23 14:50:37');
 
 -- --------------------------------------------------------
 
@@ -213,16 +213,16 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `image`, `description`, `created_at`) VALUES
-(1, 'Web Development', 'web-development', 'frontend-template/img/cat-1.jpg', 'Master the art of Web Development with our expert-led courses.', '2026-03-22 17:26:49'),
-(2, 'App Design', 'app-design', 'frontend-template/img/cat-2.jpg', 'Master the art of App Design with our expert-led courses.', '2026-03-22 17:26:49'),
-(3, 'Marketing', 'marketing', 'frontend-template/img/cat-3.jpg', 'Master the art of Marketing with our expert-led courses.', '2026-03-22 17:26:49'),
-(4, 'Photography', 'photography', 'frontend-template/img/cat-4.jpg', 'Master the art of Photography with our expert-led courses.', '2026-03-22 17:26:49'),
-(5, 'Business', 'business', 'frontend-template/img/cat-1.jpg', 'Master the art of Business with our expert-led courses.', '2026-03-22 17:26:50'),
-(6, 'Soft Skills', 'soft-skills', 'frontend-template/img/cat-2.jpg', 'Master the art of Soft Skills with our expert-led courses.', '2026-03-22 17:26:50'),
-(7, 'Graphics Design', 'graphics-design', 'frontend-template/img/cat-3.jpg', 'Master the art of Graphics Design with our expert-led courses.', '2026-03-22 17:26:50'),
-(8, 'Data Science', 'data-science', 'frontend-template/img/cat-4.jpg', 'Master the art of Data Science with our expert-led courses.', '2026-03-22 17:26:50'),
-(9, 'Networking', 'networking', 'frontend-template/img/cat-1.jpg', 'Master the art of Networking with our expert-led courses.', '2026-03-22 17:26:50'),
-(10, 'Cyber Security', 'cyber-security', 'frontend-template/img/cat-2.jpg', 'Master the art of Cyber Security with our expert-led courses.', '2026-03-22 17:26:51');
+(1, 'Web Development', 'web-development', 'assets/img/cat-1.jpg', 'Master the art of Web Development with our expert-led courses.', '2026-03-22 17:26:49'),
+(2, 'App Design', 'app-design', 'assets/img/cat-2.jpg', 'Master the art of App Design with our expert-led courses.', '2026-03-22 17:26:49'),
+(3, 'Marketing', 'marketing', 'assets/img/cat-3.jpg', 'Master the art of Marketing with our expert-led courses.', '2026-03-22 17:26:49'),
+(4, 'Photography', 'photography', 'assets/img/cat-4.jpg', 'Master the art of Photography with our expert-led courses.', '2026-03-22 17:26:49'),
+(5, 'Business', 'business', 'assets/img/cat-1.jpg', 'Master the art of Business with our expert-led courses.', '2026-03-22 17:26:50'),
+(6, 'Soft Skills', 'soft-skills', 'assets/img/cat-2.jpg', 'Master the art of Soft Skills with our expert-led courses.', '2026-03-22 17:26:50'),
+(7, 'Graphics Design', 'graphics-design', 'assets/img/cat-3.jpg', 'Master the art of Graphics Design with our expert-led courses.', '2026-03-22 17:26:50'),
+(8, 'Data Science', 'data-science', 'assets/img/cat-4.jpg', 'Master the art of Data Science with our expert-led courses.', '2026-03-22 17:26:50'),
+(9, 'Networking', 'networking', 'assets/img/cat-1.jpg', 'Master the art of Networking with our expert-led courses.', '2026-03-22 17:26:50'),
+(10, 'Cyber Security', 'cyber-security', 'assets/img/cat-2.jpg', 'Master the art of Cyber Security with our expert-led courses.', '2026-03-22 17:26:51');
 
 -- --------------------------------------------------------
 
@@ -323,16 +323,16 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `title`, `slug`, `description`, `thumbnail`, `price`, `category_id`, `instructor_id`, `status`, `created_at`, `updated_at`, `what_will_learn`, `requirements`, `target_audience`, `discount_price`, `video_preview_url`, `total_duration_hours`, `tags`, `career_path`) VALUES
-(1, 'Advanced Course 1', 'advanced-course-1', 'This is a comprehensive guide to mastering the topics covered in Course 1. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-2.jpg', '63.00', 7, 1, 'published', '2026-03-22 17:26:51', '2026-03-22 17:26:51', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '47.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
-(2, 'Advanced Course 2', 'advanced-course-2', 'This is a comprehensive guide to mastering the topics covered in Course 2. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-3.jpg', '71.00', 4, 9, 'published', '2026-03-22 17:26:54', '2026-03-22 17:26:54', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '49.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
-(3, 'Advanced Course 3', 'advanced-course-3', 'This is a comprehensive guide to mastering the topics covered in Course 3. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-1.jpg', '84.00', 7, 1, 'published', '2026-03-22 17:26:55', '2026-03-22 17:26:55', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '41.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
-(4, 'Advanced Course 4', 'advanced-course-4', 'This is a comprehensive guide to mastering the topics covered in Course 4. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-2.jpg', '67.00', 2, 7, 'published', '2026-03-22 17:26:57', '2026-03-22 17:26:57', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '39.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
-(5, 'Advanced Course 5', 'advanced-course-5', 'This is a comprehensive guide to mastering the topics covered in Course 5. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-3.jpg', '77.00', 10, 4, 'published', '2026-03-22 17:26:58', '2026-03-22 17:26:58', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '36.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
-(6, 'Advanced Course 6', 'advanced-course-6', 'This is a comprehensive guide to mastering the topics covered in Course 6. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-1.jpg', '79.00', 3, 3, 'published', '2026-03-22 17:27:01', '2026-03-22 17:27:01', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '44.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
-(7, 'Advanced Course 7', 'advanced-course-7', 'This is a comprehensive guide to mastering the topics covered in Course 7. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-2.jpg', '92.00', 2, 4, 'published', '2026-03-22 17:27:03', '2026-03-22 17:27:03', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '32.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
-(8, 'Advanced Course 8', 'advanced-course-8', 'This is a comprehensive guide to mastering the topics covered in Course 8. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-3.jpg', '88.00', 5, 6, 'published', '2026-03-22 17:27:05', '2026-03-22 17:27:05', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '30.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
-(9, 'Advanced Course 9', 'advanced-course-9', 'This is a comprehensive guide to mastering the topics covered in Course 9. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-1.jpg', '68.00', 3, 7, 'published', '2026-03-22 17:27:09', '2026-03-22 17:27:09', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '44.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
-(10, 'Advanced Course 10', 'advanced-course-10', 'This is a comprehensive guide to mastering the topics covered in Course 10. You will learn everything from basics to advanced levels.', 'frontend-template/img/course-2.jpg', '100.00', 1, 6, 'published', '2026-03-22 17:27:10', '2026-03-22 17:27:10', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '30.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL);
+(1, 'Advanced Course 1', 'advanced-course-1', 'This is a comprehensive guide to mastering the topics covered in Course 1. You will learn everything from basics to advanced levels.', 'assets/img/course-2.jpg', '63.00', 7, 1, 'published', '2026-03-22 17:26:51', '2026-03-22 17:26:51', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '47.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
+(2, 'Advanced Course 2', 'advanced-course-2', 'This is a comprehensive guide to mastering the topics covered in Course 2. You will learn everything from basics to advanced levels.', 'assets/img/course-3.jpg', '71.00', 4, 9, 'published', '2026-03-22 17:26:54', '2026-03-22 17:26:54', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '49.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
+(3, 'Advanced Course 3', 'advanced-course-3', 'This is a comprehensive guide to mastering the topics covered in Course 3. You will learn everything from basics to advanced levels.', 'assets/img/course-1.jpg', '84.00', 7, 1, 'published', '2026-03-22 17:26:55', '2026-03-22 17:26:55', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '41.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
+(4, 'Advanced Course 4', 'advanced-course-4', 'This is a comprehensive guide to mastering the topics covered in Course 4. You will learn everything from basics to advanced levels.', 'assets/img/course-2.jpg', '67.00', 2, 7, 'published', '2026-03-22 17:26:57', '2026-03-22 17:26:57', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '39.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
+(5, 'Advanced Course 5', 'advanced-course-5', 'This is a comprehensive guide to mastering the topics covered in Course 5. You will learn everything from basics to advanced levels.', 'assets/img/course-3.jpg', '77.00', 10, 4, 'published', '2026-03-22 17:26:58', '2026-03-22 17:26:58', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '36.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
+(6, 'Advanced Course 6', 'advanced-course-6', 'This is a comprehensive guide to mastering the topics covered in Course 6. You will learn everything from basics to advanced levels.', 'assets/img/course-1.jpg', '79.00', 3, 3, 'published', '2026-03-22 17:27:01', '2026-03-22 17:27:01', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '44.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
+(7, 'Advanced Course 7', 'advanced-course-7', 'This is a comprehensive guide to mastering the topics covered in Course 7. You will learn everything from basics to advanced levels.', 'assets/img/course-2.jpg', '92.00', 2, 4, 'published', '2026-03-22 17:27:03', '2026-03-22 17:27:03', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '32.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
+(8, 'Advanced Course 8', 'advanced-course-8', 'This is a comprehensive guide to mastering the topics covered in Course 8. You will learn everything from basics to advanced levels.', 'assets/img/course-3.jpg', '88.00', 5, 6, 'published', '2026-03-22 17:27:05', '2026-03-22 17:27:05', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '30.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
+(9, 'Advanced Course 9', 'advanced-course-9', 'This is a comprehensive guide to mastering the topics covered in Course 9. You will learn everything from basics to advanced levels.', 'assets/img/course-1.jpg', '68.00', 3, 7, 'published', '2026-03-22 17:27:09', '2026-03-22 17:27:09', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '44.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL),
+(10, 'Advanced Course 10', 'advanced-course-10', 'This is a comprehensive guide to mastering the topics covered in Course 10. You will learn everything from basics to advanced levels.', 'assets/img/course-2.jpg', '100.00', 1, 6, 'published', '2026-03-22 17:27:10', '2026-03-22 17:27:10', '[\"Understand core concepts of the industry\", \"Build 5+ real-world projects\", \"Master advanced debugging techniques\", \"Learn how to scale applications\"]', '[\"Basic understanding of the subject\", \"A modern computer with internet access\", \"Passion for learning new skills\"]', '[\"Beginners looking to start a career\", \"Intermediate learners wanting to level up\", \"Professional developers\"]', '30.99', 'https://www.youtube.com/embed/dQw4w9WgXcQ', '25.5', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -783,7 +783,7 @@ CREATE TABLE `hero_slides` (
 --
 
 INSERT INTO `hero_slides` (`id`, `subtitle`, `title`, `description`, `image`, `btn_text`, `btn_link`, `status`, `created_at`) VALUES
-(1, 'Best Online Courses', 'The Best Online Learning Platform', 'Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no.', 'frontend-template/img/carousel-1.jpg', 'courses', 'courses.php', 'active', '2026-03-23 17:21:34');
+(1, 'Best Online Courses', 'The Best Online Learning Platform', 'Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no.', 'assets/img/carousel-1.jpg', 'courses', 'courses.php', 'active', '2026-03-23 17:21:34');
 
 -- --------------------------------------------------------
 
@@ -833,14 +833,14 @@ CREATE TABLE `image_gallery` (
 --
 
 INSERT INTO `image_gallery` (`id`, `title`, `image`, `status`, `created_at`) VALUES
-(1, 'Interactive Learning Session', 'frontend-template/img/course-1.jpg', 'active', '2026-03-23 14:37:30'),
-(2, 'Graduation Ceremony 2026', 'frontend-template/img/course-2.jpg', 'active', '2026-03-23 14:37:30'),
-(3, 'Corporate Training Workshop', 'frontend-template/img/course-3.jpg', 'active', '2026-03-23 14:37:30'),
-(4, 'Web Design Mastery Class', 'frontend-template/img/course-1.jpg', 'active', '2026-03-23 14:37:30'),
-(5, 'Digital Marketing Success', 'frontend-template/img/course-2.jpg', 'active', '2026-03-23 14:37:30'),
-(6, 'Mobile App Launch Event', 'frontend-template/img/course-3.jpg', 'active', '2026-03-23 14:37:30'),
-(7, 'Python For Beginners Workshop', 'frontend-template/img/course-1.jpg', 'active', '2026-03-23 14:37:30'),
-(8, 'UI/UX Design Studio Session', 'frontend-template/img/course-2.jpg', 'active', '2026-03-23 14:37:30');
+(1, 'Interactive Learning Session', 'assets/img/course-1.jpg', 'active', '2026-03-23 14:37:30'),
+(2, 'Graduation Ceremony 2026', 'assets/img/course-2.jpg', 'active', '2026-03-23 14:37:30'),
+(3, 'Corporate Training Workshop', 'assets/img/course-3.jpg', 'active', '2026-03-23 14:37:30'),
+(4, 'Web Design Mastery Class', 'assets/img/course-1.jpg', 'active', '2026-03-23 14:37:30'),
+(5, 'Digital Marketing Success', 'assets/img/course-2.jpg', 'active', '2026-03-23 14:37:30'),
+(6, 'Mobile App Launch Event', 'assets/img/course-3.jpg', 'active', '2026-03-23 14:37:30'),
+(7, 'Python For Beginners Workshop', 'assets/img/course-1.jpg', 'active', '2026-03-23 14:37:30'),
+(8, 'UI/UX Design Studio Session', 'assets/img/course-2.jpg', 'active', '2026-03-23 14:37:30');
 
 -- --------------------------------------------------------
 
@@ -1119,7 +1119,7 @@ CREATE TABLE `newsletter_settings` (
   `id` int(11) NOT NULL DEFAULT 1,
   `title` varchar(255) DEFAULT 'Newsletter',
   `subtitle` varchar(255) DEFAULT 'Subscribe to our newsletter',
-  `background_img` varchar(255) DEFAULT 'frontend-template/img/carousel-1.jpg'
+  `background_img` varchar(255) DEFAULT 'assets/img/carousel-1.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1127,7 +1127,7 @@ CREATE TABLE `newsletter_settings` (
 --
 
 INSERT INTO `newsletter_settings` (`id`, `title`, `subtitle`, `background_img`) VALUES
-(1, 'Newsletter', 'Subscribe to our newsletter', 'frontend-template/img/carousel-1.jpg');
+(1, 'Newsletter', 'Subscribe to our newsletter', 'assets/img/carousel-1.jpg');
 
 -- --------------------------------------------------------
 
@@ -1504,16 +1504,16 @@ CREATE TABLE `success_stories` (
 --
 
 INSERT INTO `success_stories` (`id`, `student_name`, `course_info`, `thumbnail`, `video_url`, `status`, `created_at`) VALUES
-(1, 'Priyabrata Chowdhury', 'Web Dev Batch - 11', 'frontend-template/img/course-1.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
-(2, 'Anamika Abedin', 'UI/UX Design Batch - 2', 'frontend-template/img/course-2.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
-(3, 'Md Jawadul Karim', 'UI/UX Design Batch - 2', 'frontend-template/img/course-3.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
-(4, 'Mariya Sharmin', 'Data Analytics Batch - 2', 'frontend-template/img/course-1.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
-(5, 'KM Nurunnabi', 'Laravel Batch - 1', 'frontend-template/img/course-2.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
-(6, 'Mahmudul Haque Shawon', 'Python Django Batch - 10', 'frontend-template/img/course-3.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
-(7, 'Sumaiya Akter', 'Graphic Design Batch - 04', 'frontend-template/img/course-1.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
-(8, 'Tanvir Ahmed', 'Cyber Security Batch - 01', 'frontend-template/img/course-2.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
-(9, 'Nabila Islam', 'Digital Marketing Batch - 08', 'frontend-template/img/course-3.jpg', 'https://www.youtube.com/watch?v=dQw4w9XcQ', 'active', '2026-03-23 13:46:30'),
-(10, 'Sajid Hasan', 'App Development Batch - 03', 'frontend-template/img/course-1.jpg', 'https://www.youtube.com/watch?v=dQw4w9XcQ', 'active', '2026-03-23 13:46:30'),
+(1, 'Priyabrata Chowdhury', 'Web Dev Batch - 11', 'assets/img/course-1.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
+(2, 'Anamika Abedin', 'UI/UX Design Batch - 2', 'assets/img/course-2.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
+(3, 'Md Jawadul Karim', 'UI/UX Design Batch - 2', 'assets/img/course-3.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
+(4, 'Mariya Sharmin', 'Data Analytics Batch - 2', 'assets/img/course-1.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
+(5, 'KM Nurunnabi', 'Laravel Batch - 1', 'assets/img/course-2.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
+(6, 'Mahmudul Haque Shawon', 'Python Django Batch - 10', 'assets/img/course-3.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
+(7, 'Sumaiya Akter', 'Graphic Design Batch - 04', 'assets/img/course-1.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
+(8, 'Tanvir Ahmed', 'Cyber Security Batch - 01', 'assets/img/course-2.jpg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'active', '2026-03-23 13:46:30'),
+(9, 'Nabila Islam', 'Digital Marketing Batch - 08', 'assets/img/course-3.jpg', 'https://www.youtube.com/watch?v=dQw4w9XcQ', 'active', '2026-03-23 13:46:30'),
+(10, 'Sajid Hasan', 'App Development Batch - 03', 'assets/img/course-1.jpg', 'https://www.youtube.com/watch?v=dQw4w9XcQ', 'active', '2026-03-23 13:46:30'),
 (11, 'Jahid', 'Advanced Course 6 - Batch 1', 'uploads/stories/1774274311_69c147074dd73.webp', 'https://www.youtube.com/watch?v=jITSKG2t3VM', 'active', '2026-03-23 13:58:31');
 
 -- --------------------------------------------------------
@@ -2582,4 +2582,5 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 

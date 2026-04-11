@@ -46,7 +46,7 @@
                 <!-- Placeholder if empty -->
                 <div class="testimonial-item bg-white shadow-sm rounded-4 p-3 m-2">
                     <div class="position-relative overflow-hidden rounded-3 mb-3">
-                        <img class="img-fluid w-100" src="frontend-template/img/course-1.jpg" alt="">
+                        <img class="img-fluid w-100" src="assets/img/course-1.jpg" alt="">
                         <div class="position-absolute top-50 start-50 translate-middle"><i class="fa fa-play-circle text-white opacity-75" style="font-size: 3rem;"></i></div>
                     </div>
                     <div class="text-center">
@@ -78,3 +78,4 @@
 }
 </style>
 <!-- Success Story End -->
+

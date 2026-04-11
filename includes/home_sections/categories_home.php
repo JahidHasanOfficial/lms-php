@@ -14,7 +14,7 @@
                     <!-- Featured Wide Category -->
                     <div class="col-12 wow zoomIn" data-wow-delay="0.1s">
                         <a class="category-item position-relative d-block overflow-hidden rounded-4 shadow-sm" href="courses.php?category=<?php echo $categories[0]['slug'] ?? ''; ?>">
-                            <img class="img-fluid w-100" src="<?php echo $categories[0]['image'] ?: 'frontend-template/img/cat-1.jpg'; ?>" alt="" style="height: 300px; object-fit: cover;">
+                            <img class="img-fluid w-100" src="<?php echo $categories[0]['image'] ?: 'assets/img/cat-1.jpg'; ?>" alt="" style="height: 300px; object-fit: cover;">
                             <div class="category-overlay p-4">
                                 <span class="badge bg-primary rounded-pill mb-2 px-3 py-2 small fw-bold">Popular</span>
                                 <h3 class="text-dark fw-bold mb-1 h5"><?php echo $categories[0]['name'] ?? 'Web Development'; ?></h3>
@@ -27,7 +27,7 @@
                     <?php if (isset($categories[1])): ?>
                     <div class="col-md-6 wow zoomIn" data-wow-delay="0.3s">
                         <a class="category-item position-relative d-block overflow-hidden rounded-4 shadow-sm" href="courses.php?category=<?php echo $categories[1]['slug']; ?>">
-                            <img class="img-fluid w-100" src="<?php echo $categories[1]['image'] ?: 'frontend-template/img/cat-2.jpg'; ?>" alt="" style="height: 200px; object-fit: cover;">
+                            <img class="img-fluid w-100" src="<?php echo $categories[1]['image'] ?: 'assets/img/cat-2.jpg'; ?>" alt="" style="height: 200px; object-fit: cover;">
                             <div class="category-overlay-mini p-4">
                                 <h4 class="text-dark fw-bold mb-0 h6"><?php echo $categories[1]['name']; ?></h4>
                                 <small class="text-primary fw-bold">Explore <i class="fa fa-chevron-right ms-1" style="font-size: 0.6rem;"></i></small>
@@ -39,7 +39,7 @@
                     <?php if (isset($categories[2])): ?>
                     <div class="col-md-6 wow zoomIn" data-wow-delay="0.5s">
                         <a class="category-item position-relative d-block overflow-hidden rounded-4 shadow-sm" href="courses.php?category=<?php echo $categories[2]['slug']; ?>">
-                            <img class="img-fluid w-100" src="<?php echo $categories[2]['image'] ?: 'frontend-template/img/cat-3.jpg'; ?>" alt="" style="height: 200px; object-fit: cover;">
+                            <img class="img-fluid w-100" src="<?php echo $categories[2]['image'] ?: 'assets/img/cat-3.jpg'; ?>" alt="" style="height: 200px; object-fit: cover;">
                             <div class="category-overlay-mini p-4">
                                 <h4 class="text-dark fw-bold mb-0 h6"><?php echo $categories[2]['name']; ?></h4>
                                 <small class="text-primary fw-bold">Explore <i class="fa fa-chevron-right ms-1" style="font-size: 0.6rem;"></i></small>
@@ -54,7 +54,7 @@
             <div class="col-lg-5 col-md-12 wow zoomIn" data-wow-delay="0.7s">
                 <?php if (isset($categories[3])): ?>
                 <a class="category-item position-relative d-block h-100 overflow-hidden rounded-4 shadow-sm" href="courses.php?category=<?php echo $categories[3]['slug']; ?>">
-                    <img class="img-fluid w-100 h-100" src="<?php echo $categories[3]['image'] ?: 'frontend-template/img/cat-4.jpg'; ?>" alt="" style="object-fit: cover; min-height: 525px;">
+                    <img class="img-fluid w-100 h-100" src="<?php echo $categories[3]['image'] ?: 'assets/img/cat-4.jpg'; ?>" alt="" style="object-fit: cover; min-height: 525px;">
                     <div class="category-overlay p-4">
                         <span class="badge bg-primary rounded-pill mb-2 px-3 py-2 small fw-bold">Trending</span>
                         <h3 class="text-dark fw-bold mb-1 h5"><?php echo $categories[3]['name']; ?></h3>
@@ -74,7 +74,7 @@
                 <div class="category-slide-item px-2 pb-4">
                     <a href="courses.php?category=<?php echo $c['slug']; ?>" class="category-pill d-flex align-items-center bg-white shadow-sm p-3 rounded-4 border-0 text-decoration-none h-100">
                         <div class="category-icon-box me-3 overflow-hidden">
-                            <img src="<?php echo $c['image'] ?: 'frontend-template/img/cat-1.jpg'; ?>" alt="" class="w-100 h-100" style="object-fit: cover;">
+                            <img src="<?php echo $c['image'] ?: 'assets/img/cat-1.jpg'; ?>" alt="" class="w-100 h-100" style="object-fit: cover;">
                         </div>
                         <div>
                            <h6 class="mb-0 text-dark fw-bold" style="font-size: 0.9rem;"><?php echo $c['name']; ?></h6>

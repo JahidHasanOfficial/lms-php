@@ -39,7 +39,7 @@
                     </div>
                     <p class="text-muted italic mb-4">"Learning from this platform was the best decision for my career. The mentors were exceptional."</p>
                     <div class="author-block mt-auto border-top pt-4">
-                        <img class="p-1 mb-3 border-primary border-2 border" src="frontend-template/img/testimonial-1.jpg" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto;">
+                        <img class="p-1 mb-3 border-primary border-2 border" src="assets/img/testimonial-1.jpg" style="width: 70px; height: 70px; border-radius: 50%; margin: 0 auto;">
                         <h5 class="mb-1 fw-bold">Sample Student</h5>
                         <small class="text-primary fw-bold">Software Engineer</small>
                     </div>
@@ -81,3 +81,4 @@
 }
 </style>
 <!-- Testimonial End -->
+

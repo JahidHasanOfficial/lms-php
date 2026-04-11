@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $authorId = $_SESSION['user_id'];
     
     if (isset($_POST['add_blog'])) {
-        $imgPath = 'frontend-template/img/course-1.jpg';
+        $imgPath = 'assets/img/course-1.jpg';
         if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
             $uploaded = ImageHelper::upload($_FILES['image'], '../uploads/blogs/');
             if ($uploaded) $imgPath = str_replace('../', '', $uploaded);
@@ -153,3 +153,4 @@ document.querySelectorAll('.edit-blog-btn').forEach(btn => {
 </script>
 
 <?php include 'includes/footer.php'; ?>
+

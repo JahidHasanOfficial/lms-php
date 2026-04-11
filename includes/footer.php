@@ -12,9 +12,9 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>114/116 Mazar Road, Mirpur-1, Dhaka-1216</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>01969-955566</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@primeuniversity.ac.bd</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
@@ -26,22 +26,22 @@
                     <h4 class="text-white mb-3">Gallery</h4>
                     <div class="row g-2 pt-2">
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="frontend-template/img/course-1.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="assets/img/course-1.jpg" alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="frontend-template/img/course-2.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="assets/img/course-2.jpg" alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="frontend-template/img/course-3.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="assets/img/course-3.jpg" alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="frontend-template/img/course-2.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="assets/img/course-2.jpg" alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="frontend-template/img/course-3.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="assets/img/course-3.jpg" alt="">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="frontend-template/img/course-1.jpg" alt="">
+                            <img class="img-fluid bg-light p-1" src="assets/img/course-1.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Prime University</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="https://primeuniversity.ac.bd/" target="_blank">Prime University</a>, All Right Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
@@ -83,14 +83,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="frontend-template/lib/wow/wow.min.js"></script>
-    <script src="frontend-template/lib/easing/easing.min.js"></script>
-    <script src="frontend-template/lib/waypoints/waypoints.min.js"></script>
-    <script src="frontend-template/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="assets/lib/wow/wow.min.js"></script>
+    <script src="assets/lib/easing/easing.min.js"></script>
+    <script src="assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="frontend-template/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
+
 
